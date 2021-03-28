@@ -35,16 +35,27 @@
 
     <div class="container" id="col_login">
         <div class="row">
-            <div class="col-md-5">
-                <div class="card" style="height: 90vh;border: none;">
+            <div class="col-md-5 mx-auto mt-5">
+                <div class="card" style="height: 60vh;border: none;">
                     <div class="card-header text-center" style="background-color: #ffe600;">
                         <h3>Login</h3>
                     </div>
+                    @if(\Session::has('alert'))
+                        <div class="alert alert-danger">
+                            <div>{{Session::get('alert')}}</div>
+                        </div>
+                    @endif
+                    @if(\Session::has('alert-success'))
+                        <div class="alert alert-success">
+                            <div>{{Session::get('alert-success')}}</div>
+                        </div>
+                    @endif
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="{{url('/loginPost')}}">
+                            {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                <input type="email" class="form-control" name="email" id="exampleInputEmail1"
                                     aria-describedby="emailHelp">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with
                                     anyone
@@ -52,7 +63,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <input type="password" class="form-control" name="password" id="exampleInputPassword1">
                             </div>
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -65,7 +76,7 @@
                     </div>
                     <div class="card-footer text-muted">
                         Don't have an account?
-                        <a href="">Create Account</a>
+                        <a href="{{url('/register')}}">Create Account</a>
                     </div>
                 </div>
             </div>
