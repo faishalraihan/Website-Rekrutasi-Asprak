@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('homepage');
-});
+    return view('pages.homepage');
+})->name('home');
 
-Route::get('/login', 'AsprakController@login');
+Route::get('test-tulis', 'AsprakController@testTulis');
+Route::get('daftar-asprak', 'AsprakController@daftarAsprak')->name('daftar-asprak');
+Route::get('dashboard', 'AsprakController@dashboard')->name('dashboard');
+Route::get('/login', 'AsprakController@login')->name('login');
 Route::post('/loginPost', 'AsprakController@loginPost');
-Route::get('/register', 'AsprakController@register');
+Route::get('/register', 'AsprakController@register')->name('register');
 Route::post('/store', 'AsprakController@store');
 Route::resource('asprak', 'AsprakController');

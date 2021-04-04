@@ -130,8 +130,18 @@ class AsprakController extends Controller
         public function update(Request $request, $id)
         {
         }
-        public function test()
+        public function testTulis()
         {
-                return view('homepage');
+                return view('pages.testTulis');
+        }
+
+        public function daftarAsprak()
+        {
+                return view('pages.daftarAsprak');
+        }
+
+        public function dashboard()
+        {
+                return view('pages.dashboard');
         }
 }
