@@ -1,3 +1,17 @@
+<div class="footer-dark">
+    <footer>
+        <div class="container">
+            <div class="d-flex justify-content-center text-center">
+                <div class="col-md-6 item text">
+                    <h3>Website Rekruitasi Asprak IF Lab</h3>
+                    <p>Pendaftaran, Ujian dan Seleksi Calon Asisten Praktikum IF Lab dilaksanakan pada Website ini.</p>
+                </div>
+            </div>
+            <p class="copyright">Website Rekruitasi Asprak © 2021</p>
+        </div>
+    </footer>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>
