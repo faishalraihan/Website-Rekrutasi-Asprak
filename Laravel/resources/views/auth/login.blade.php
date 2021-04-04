@@ -14,24 +14,7 @@
 </head>
 
 <body style="background-color: #e6e5e5;">
-    <nav class="navbar navbar-expand-lg navbar-light rounded-bottom" style="background-color: #ffe600;">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="https://412292.smushcdn.com/560079/wp-content/uploads/sites/81/2020/07/cropped-LogoIFLABWEbsite-1-3.png?lossy=1&strip=1&webp=1"
-                    alt="" loading="lazy">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <form class="form-inline">
-                    <button class="btn btn-outline-dark mr-sm-2" type="button">Login</button>
-                    <button class="btn btn-dark" type="button">Join Now</button>
-                </form>
-            </div>
-        </div>
-    </nav>
+    @include('includes.navbar')
 
     <div class="container" id="col_login">
         <div class="row">
@@ -41,14 +24,14 @@
                         <h3>Login</h3>
                     </div>
                     @if(\Session::has('alert'))
-                        <div class="alert alert-danger">
-                            <div>{{Session::get('alert')}}</div>
-                        </div>
+                    <div class="alert alert-danger">
+                        <div>{{Session::get('alert')}}</div>
+                    </div>
                     @endif
                     @if(\Session::has('alert-success'))
-                        <div class="alert alert-success">
-                            <div>{{Session::get('alert-success')}}</div>
-                        </div>
+                    <div class="alert alert-success">
+                        <div>{{Session::get('alert-success')}}</div>
+                    </div>
                     @endif
                     <div class="card-body">
                         <form method="POST" action="{{url('/loginPost')}}">
@@ -85,21 +68,7 @@
     </div>
 
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-        </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
-        </script>
-
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
+    @include('includes.footer')
 </body>
 
 </html>
