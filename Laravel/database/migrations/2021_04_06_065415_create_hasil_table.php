@@ -14,7 +14,9 @@ class CreateHasilTable extends Migration
     public function up()
     {
         Schema::create('hasil', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('id_test');
+            $table->integer('nilai');
             $table->timestamps();
         });
     }
