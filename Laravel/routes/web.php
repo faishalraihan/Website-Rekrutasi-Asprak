@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('test-tulis', 'AsprakController@testTulis');
 Route::get('daftar-asprak', 'AsprakController@daftarAsprak')->name('daftar-asprak');
 Route::get('dashboard', 'AsprakController@dashboard')->name('dashboard');
+Route::get('/logout', 'AsprakController@logout')->name('logout');
 Route::get('/login', 'AsprakController@login')->name('login');
 Route::post('/loginPost', 'AsprakController@loginPost');
 Route::get('/register', 'AsprakController@register')->name('register');

@@ -3,6 +3,7 @@
 @section('title','Web Rekrutasi Asprak')
 
 @section('content')
+
 <div class="jumbotron jumbotron-fluid" style="background: url('img/jumbo-bg2.jpg'); background-size: cover">
     <div class="container text-center">
         <h1 class="mb-3" style="color:whitesmoke">Rekruitasi Asprak</h1>
@@ -16,15 +17,18 @@
     <h2 class="text-center pb-5">Alur Pendaftaran</h2>
     <div class="row">
         <div class="col-sm-4 text-center">
-            <img src="{{url('img/upload.png')}}" class="img-responsive" style="width:30%" alt="Icon by xnimrodx in Flaticon">
+            <img src="{{url('img/upload.png')}}" class="img-responsive" style="width:30%"
+                alt="Icon by xnimrodx in Flaticon">
             <h3 class="text-center">Upload Berkas</h3>
         </div>
         <div class="col-sm-4 text-center">
-            <img src="{{url('img/test.png')}}" class="img-responsive" style="width:30%" alt="Icon by xnimrodx in Flaticon">
+            <img src="{{url('img/test.png')}}" class="img-responsive" style="width:30%"
+                alt="Icon by xnimrodx in Flaticon">
             <h3 class="text-center">Tes Tulis</h3>
         </div>
         <div class="col-sm-4 text-center">
-            <img src="{{url('img/interview.png')}}" class="img-responsive" style="width:30%" alt="Icon by xnimrodx in Flaticon">
+            <img src="{{url('img/interview.png')}}" class="img-responsive" style="width:30%"
+                alt="Icon by xnimrodx in Flaticon">
             <h3 class="text-center">Interview</h3>
         </div>
     </div>
@@ -123,6 +127,7 @@
         </div>
     </div>
 </div>
+
 
 {{-- <div class="container mb-5">
     <div class="row">

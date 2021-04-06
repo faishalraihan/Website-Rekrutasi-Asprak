@@ -12,8 +12,7 @@
     <!-- Boostrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <!-- Load CSS -->
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/css/master.css') !!}">
-
+    <link rel="stylesheet" type="text/css" href="{{url('assets/css/master.css') }}">
 
     <title>@yield('title')</title>
 </head>

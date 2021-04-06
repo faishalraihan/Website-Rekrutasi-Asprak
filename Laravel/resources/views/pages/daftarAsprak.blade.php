@@ -3,7 +3,7 @@
 @section('title','Daftar Asprak')
 
 @section('content')
-<form class="container daftar-asprak"
+<form class="container daftar-asprak pb-4"
     style="margin-top: 5vh;height:fit-content;margin-bottom: 50px; background-color: rgb(192, 230, 238);border-radius: 20px;">
     <div class="row">
         <div class="col-md-12">
@@ -15,45 +15,52 @@
         <div class="col-md-6">
             <!-- <div class="form-field" style="margin-top: 35%;"> -->
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Masukkan Email" name="email">
                 <small id="emailHelp" class="form-text text-muted">*Gunakan Email SSO</small>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Nama Lengkap</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Nama Lengkap">
+                <label for="name">Nama Lengkap</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
+                    placeholder="Nama Lengkap" name="name">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">NIM</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Masukkan NIM">
+                <label for="nim">NIM</label>
+                <input type="text" class="form-control" id="nim" aria-describedby="emailHelp" placeholder="Masukkan NIM"
+                    name="nim">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Jurusan</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Masukkan Jurusan">
+                <label for="jurusan">Jurusan</label>
+                <input type="text" class="form-control" id="jurusan" aria-describedby="emailHelp"
+                    placeholder="Masukkan Jurusan" name="jurusan">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Angkatan</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Ketik Jurusan Anda">
+                <label for="angkatan">Angkatan</label>
+                <input type="text" class="form-control" id="angkatan" aria-describedby="emailHelp"
+                    placeholder="Ketik Angkatan Anda" name="angkatan">
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="exampleInputEmail1">Kelas Default</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Ketikkan Kelas Default ">
+                <label for="kelas">Kelas Default</label>
+                <input type="text" class="form-control" id="kelas" aria-describedby="emailHelp"
+                    placeholder="Ketikkan Kelas Default" name="kelas">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Pilihan Mata Kuliah Praktikum</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Mata Kuliah Praktikum">
+                <label for="praktikumPilihan">Pilihan Mata Kuliah Praktikum</label>
+                <input type="text" class="form-control" id="praktikumPilihan" aria-describedby="emailHelp"
+                    placeholder="Mata Kuliah Praktikum" name="praktikum_pilihan">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password Akun">
+                <label for="berkas">Berkas (CV)</label>
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile03"
+                            aria-describedby="inputGroupFileAddon03" name="berkas">
+                        <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
+                    </div>
+                </div>
             </div>
             <button type="submit" class="btn btn-info mt-4 mb-5" style="width: 100%;">Daftar</button>
         </div>
