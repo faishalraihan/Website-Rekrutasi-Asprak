@@ -13,7 +13,7 @@ class CreateSoalTable extends Migration
      */
     public function up()
     {
-        Schema::create('soal', function (Blueprint $table) {
+        Schema::create('soals', function (Blueprint $table) {
             $table->id();
             $table->string('soal');
             $table->string('kunciJawaban');
@@ -30,6 +30,6 @@ class CreateSoalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('soal');
+        Schema::dropIfExists('soals');
     }
 }
