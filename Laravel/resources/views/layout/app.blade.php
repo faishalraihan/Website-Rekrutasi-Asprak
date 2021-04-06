@@ -11,12 +11,8 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!-- Boostrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-<<<<<<< Updated upstream
-=======
     <!-- Load CSS -->
     <link rel="stylesheet" type="text/css" href="{{url('assets/css/master.css') }}">
->>>>>>> Stashed changes
-
 
     <title>@yield('title')</title>
 </head>

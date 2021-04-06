@@ -14,20 +14,9 @@
 </div>
 
 <div class="container mx-auto">
-    <h2 class="text-center">Alur Pendaftaran</h2>
+    <h2 class="text-center pb-5">Alur Pendaftaran</h2>
     <div class="row">
         <div class="col-sm-4 text-center">
-<<<<<<< Updated upstream
-            <img src="{{url('img/upload.png')}}" class="img-responsive" style="width:30%" alt="Image">
-            <h3 class="text-center">Upload Berkas</h3>
-        </div>
-        <div class="col-sm-4 text-center">
-            <img src="{{url('img/test.png')}}" class="img-responsive" style="width:30%" alt="Image">
-            <h3 class="text-center">Tes Tulis</h3>
-        </div>
-        <div class="col-sm-4 text-center">
-            <img src="{{url('img/interview.png')}}" class="img-responsive" style="width:30%" alt="Image">
-=======
             <img src="{{url('img/upload.png')}}" class="img-responsive" style="width:30%"
                 alt="Icon by xnimrodx in Flaticon">
             <h3 class="text-center">Upload Berkas</h3>
@@ -40,7 +29,6 @@
         <div class="col-sm-4 text-center">
             <img src="{{url('img/interview.png')}}" class="img-responsive" style="width:30%"
                 alt="Icon by xnimrodx in Flaticon">
->>>>>>> Stashed changes
             <h3 class="text-center">Interview</h3>
         </div>
     </div>
@@ -89,7 +77,7 @@
         <h1 class="mb-3">Mata Kuliah</h1>
         <p class="lead">Daftar Praktikum di Laboratorium IF</p>
     </div>
-    <div class="container mx-auto">
+    <div class="d-flex justify-content-center">
         <div class="row">
             <div class="col-md-4">
                 <div class="card text-center" style="width: 18rem; height: 8rem">
@@ -119,34 +107,28 @@
     </div>
 </div>
 
-<<<<<<< Updated upstream
-=======
 <div class="container mx-auto">
     <h2 class="text-center pb-5">Apa sih Keuntungan jadi Asisten Praktikum?</h2>
     <div class="row mb-5">
         <div class="col-sm-4 text-center">
-            <img src="{{url('img/honor.png')}}" class="img-responsive" style="width:30%"
-                alt="Icon by xnimrodx in Flaticon">
+            <img src="{{url('img/honor.png')}}" class="img-responsive" style="width:30%" alt="Icon by xnimrodx in Flaticon">
             <h3 class="text-center">Honor</h3>
             <p>Dapatkan Honor per Jam nya untuk menambah isi Dompet Kalian.</p>
         </div>
         <div class="col-sm-4 text-center">
-            <img src="{{url('img/tak.png')}}" class="img-responsive" style="width:30%"
-                alt="Icon by xnimrodx in Flaticon">
+            <img src="{{url('img/tak.png')}}" class="img-responsive" style="width:30%" alt="Icon by xnimrodx in Flaticon">
             <h3 class="text-center">TAK</h3>
-            <p>TAK yang diperlukan untuk Lulus S1 IF adalah 60, menjadi Asprak maka kalian akan mendapatkan +15 Poin
-                TAK.</p>
+            <p>TAK yang diperlukan untuk Lulus S1 IF adalah 60, menjadi Asprak maka kalian akan mendapatkan +15 Poin TAK.</p>
         </div>
         <div class="col-sm-4 text-center">
-            <img src="{{url('img/certificate.png')}}" class="img-responsive" style="width:30%"
-                alt="Icon by xnimrodx in Flaticon">
+            <img src="{{url('img/certificate.png')}}" class="img-responsive" style="width:30%" alt="Icon by xnimrodx in Flaticon">
             <h3 class="text-center">Certificate</h3>
             <p>Tambah pengalaman di portfolio kalian dengan menggunakan Sertifikat yang kami berikan.</p>
         </div>
     </div>
 </div>
 
->>>>>>> Stashed changes
+
 {{-- <div class="container mb-5">
     <div class="row">
         <div class="col-md-12 text-center">
