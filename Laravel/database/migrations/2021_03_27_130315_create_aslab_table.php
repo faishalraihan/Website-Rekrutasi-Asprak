@@ -14,12 +14,10 @@ class CreateAslabTable extends Migration
     public function up()
     {
         Schema::create('aslabs', function (Blueprint $table) {
-            $table->integer('nim')->unsigned();
-            $table->primary('nim');
+            $table->string('nim');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            // $table->rememberToken();
             $table->timestamps();
         });
     }
