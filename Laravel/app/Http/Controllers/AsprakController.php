@@ -16,7 +16,7 @@ class AsprakController extends Controller
                 if (!Session::get('login')) {
                         return redirect('login')->with('alert', 'Please log in or register first');
                 } else {
-                        return view('homepage');
+                        return view('pages.homepage');
                 }
         }
 

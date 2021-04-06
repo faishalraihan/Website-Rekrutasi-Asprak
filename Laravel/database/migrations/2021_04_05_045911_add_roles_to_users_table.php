@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAsprakTable extends Migration
+class AddRolesToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateAsprakTable extends Migration
      */
     public function up()
     {
-        Schema::create('aspraks', function (Blueprint $table) {
-            $table->string('nim');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('roles')->default('ASPRAK'); //ASLAB, ASPRAK
         });
     }
 
@@ -29,6 +25,8 @@ class CreateAsprakTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aspraks');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('roles'); //USER, ADMIN
+        });
     }
 }
