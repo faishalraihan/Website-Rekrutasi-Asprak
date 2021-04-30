@@ -137,13 +137,7 @@ class AsprakController extends Controller
 
         public function daftarAsprak()
         {
-                // $asprak = Asprak::find($id);
-                if (Session::has('id')) {
-
-                        return view('pages.daftarAsprak');
-                } else {
-                        return redirect('login')->with('alert', 'Please log in first');
-                }
+                return view('pages.daftarAsprak');
         }
 
         public function dashboard()
