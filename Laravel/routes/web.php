@@ -25,9 +25,11 @@ Route::get('dashboardAslab', 'AslabController@index')->name('dashboardAslab');
 Route::get('/listAsprak', 'AslabController@listAsprak')->name('listAsprak');
 Route::get('/logout', 'AsprakController@logout')->name('logout');
 Route::get('/login', 'AsprakController@login')->name('login');
-Route::post('/loginPost', 'AsprakController@loginPost');
+Route::post('/loginPost', 'AsprakController@loginPost')->name('loginPost');
 Route::get('/register', 'AsprakController@register')->name('register');
 Route::post('/store', 'AsprakController@store');
 Route::resource('asprak', 'AsprakController');
+
 Route::resource('aslab', 'AslabController');
 Route::resource('pendaftaran', 'PendaftaranController');
+
