@@ -4,82 +4,53 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PendaftaranController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+        public function index()
+        {
+                if (!Session::get('login')) {
+                        return redirect('login')->with('alert', 'Please log in or register first');
+                } else {
+                        return view('pages.homepage');
+                }
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        public function daftarAsprak()
+        {
+                // $asprak = Asprak::find($id);
+                if (Session::has('nim')) {
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Pendaftaran  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pendaftaran $pendaftaran)
-    {
-        //
-    }
+                        return view('pages.daftarAsprak');
+                } else {
+                        return redirect('login')->with('alert', 'Please log in first');
+                }
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Pendaftaran  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pendaftaran $pendaftaran)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pendaftaran  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Pendaftaran $pendaftaran)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Pendaftaran  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Pendaftaran $pendaftaran)
-    {
-        //
-    }
+        public function store(Request $request)
+        {
+                // $this->validate($request, [
+                //         'jurusan' => 'required',
+                //         'angkatan' => 'required',
+                //         'kelas' => 'required',
+                //         'pilihan_pratikum' => 'required',
+                //         'berkas' => 'required|mimes:png,jpg,jpeg|max:2048',
+                // ]);
+                // echo ($request);
+                $request->validate([
+                        'email' => 'required|min:4|email|unique:users',
+                        'name' => 'required|min:4',
+                        'nim' => 'required|max:10',
+                        'jurusan' => 'required|min:4',
+                        'angkatan' => 'required|min:4',
+                        'kelas' => 'required|min:4',
+                        'pilihan_praktikum' => 'required|min:4',
+                        'berkas' => 'required|mimes:png,jpg,jpeg|max:2048',
+                ]);
+                // echo ($request);
+                Pendaftaran::insert($request);
+                return view('pages.homepage');
+        }
 }

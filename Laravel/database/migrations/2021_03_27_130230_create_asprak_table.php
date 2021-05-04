@@ -14,7 +14,7 @@ class CreateAsprakTable extends Migration
     public function up()
     {
         Schema::create('aspraks', function (Blueprint $table) {
-            $table->string('nim');
+            $table->string('nim')->primary();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');

@@ -18,6 +18,7 @@ class CreatePendaftaransTable extends Migration
             $table->string('email');
             $table->string('name');
             $table->string('nim');
+            $table->foreign('nim')->references('nim')->on('aspraks');
             $table->string('jurusan');
             $table->string('angkatan');
             $table->string('kelas');

@@ -18,15 +18,18 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('test-tulis', 'AsprakController@testTulis');
-Route::get('daftar-asprak', 'AsprakController@daftarAsprak')->name('daftar-asprak');
+Route::get('daftar-asprak', 'PendaftaranController@daftarAsprak')->name('daftar-asprak');
+Route::post('/daftar', 'PendaftaranController@store');
 Route::get('dashboard', 'AsprakController@dashboard')->name('dashboard');
+Route::get('dashboardAslab', 'AslabController@index')->name('dashboardAslab');
+Route::get('/listAsprak', 'AslabController@listAsprak')->name('listAsprak');
 Route::get('/logout', 'AsprakController@logout')->name('logout');
 Route::get('/login', 'AsprakController@login')->name('login');
 Route::post('/loginPost', 'AsprakController@loginPost')->name('loginPost');
 Route::get('/register', 'AsprakController@register')->name('register');
 Route::post('/store', 'AsprakController@store');
 Route::resource('asprak', 'AsprakController');
-<<<<<<< Updated upstream
-=======
+
 Route::resource('aslab', 'AslabController');
->>>>>>> Stashed changes
+Route::resource('pendaftaran', 'PendaftaranController');
+
