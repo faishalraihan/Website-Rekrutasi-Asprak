@@ -58,28 +58,8 @@ class Asprak extends Authenticatable
 
 
         // /** RELATIONSIHPS */
-        // public function questions()
+        // public function pendaftaran()
         // {
-        //         return $this->hasMany('App\Question', 'uploader_id');
-        // }
-        // public function answers()
-        // {
-        //         return $this->hasMany('App\Answer', 'uploader_id');
-        // }
-        // public function questionComments()
-        // {
-        //         return $this->hasMany('App\QuestionComment', 'uploader_id');
-        // }
-        // public function answerComments()
-        // {
-        //         return $this->hasMany('App\AnswerComment', 'uploader_id');
-        // }
-        // public function questionVotes()
-        // {
-        //         return $this->hasMany('App\QuestionVote', 'voter_id');
-        // }
-        // public function answerVotes()
-        // {
-        //         return $this->hasMany('App\AnswerVote', 'voter_id');
+        //         return $this->hasMany('App\Models\Pendaftaran', 'nim');
         // }
 }

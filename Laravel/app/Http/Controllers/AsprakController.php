@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Asprak;
 use App\Models\Aslab;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -60,9 +61,9 @@ class AsprakController extends Controller
                                 } else {
                                         return redirect('login')->with('alert', 'Invalid email or passwordd!');
                                 }
+                        } else {
+                                return redirect('login')->with('alert', 'Invalid email or passwordd!');
                         }
-                } else {
-                        return redirect('login')->with('alert', 'Invalid email or passworde!');
                 }
         }
 
@@ -87,9 +88,9 @@ class AsprakController extends Controller
         public function store(Request $request)
         {
                 $this->validate($request, [
-                        'nim' => 'required|min:10',
+                        'nim' => 'required|max:10',
                         'name' => 'required|min:4',
-                        'email' => 'required|min:4|email|unique:users',
+                        'email' => 'required|min:4|email|unique:aspraks',
                         'password' => 'required',
                         'password_confirmation' => 'required|same:password',
                 ]);
@@ -137,11 +138,27 @@ class AsprakController extends Controller
 
         public function daftarAsprak()
         {
-                return view('pages.daftarAsprak');
+                // $asprak = Asprak::find($id);
+                if (Session::has('nim')) {
+
+                        return view('pages.daftarAsprak');
+                } else {
+                        return redirect('login')->with('alert', 'Please log in first');
+                }
         }
 
         public function dashboard()
         {
-                return view('pages.dashboard');
+                $nim = Session::get('nim');
+                // var_dump($nim);
+                $dataP = Pendaftaran::where('nim', $nim)->first();
+                //var_dump($dataP);
+                if ($dataP) {
+                        Session::put('nimPendaftar', $dataP->nim);
+                        return view('pages.dashboard', ['dataP' => $dataP]);
+                } else {
+                        $data = Asprak::where('nim', $nim)->first();
+                        return view('pages.dashboard', ['data' => $data]);
+                }
         }
 }
