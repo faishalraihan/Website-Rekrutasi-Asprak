@@ -22,8 +22,9 @@
                 </div>
                 @endif
                 <div class="card-body">
-                    <form method="POST" action="{{url('/loginPost')}}">
-                        {{ csrf_field() }}
+                    <form method="POST" action="{{route('loginPost')}}">
+                        {{-- {{ csrf_field() }} --}}
+                        @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
                             <input type="email" class="form-control" name="email" id="exampleInputEmail1"

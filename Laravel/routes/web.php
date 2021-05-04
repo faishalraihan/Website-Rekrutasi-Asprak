@@ -22,7 +22,11 @@ Route::get('daftar-asprak', 'AsprakController@daftarAsprak')->name('daftar-aspra
 Route::get('dashboard', 'AsprakController@dashboard')->name('dashboard');
 Route::get('/logout', 'AsprakController@logout')->name('logout');
 Route::get('/login', 'AsprakController@login')->name('login');
-Route::post('/loginPost', 'AsprakController@loginPost');
+Route::post('/loginPost', 'AsprakController@loginPost')->name('loginPost');
 Route::get('/register', 'AsprakController@register')->name('register');
 Route::post('/store', 'AsprakController@store');
 Route::resource('asprak', 'AsprakController');
+<<<<<<< Updated upstream
+=======
+Route::resource('aslab', 'AslabController');
+>>>>>>> Stashed changes
