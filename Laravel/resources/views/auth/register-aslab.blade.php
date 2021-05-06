@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.app-aslab')
 
 @section('title','Login')
 
@@ -7,10 +7,10 @@
         <div class="col-md-5 mx-auto mt-5">
             <div class="card" style="height: 80vh;border: none;">
                 <div class="card-header text-center" style="background-color: #ffe600;">
-                    <h3>Register Asprak</h3>
+                    <h3>Register Aslab</h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{url('/store')}}">
+                    <form method="POST" action="{{url('/store-aslab')}}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="exampleInputFullName1">Full Name</label>

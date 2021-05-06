@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.app-aslab')
 
 @section('title','Test Tulis')
 
@@ -9,56 +9,60 @@
         <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
     </div>
 </div>
-
+<div class="container">
+    <div class="row text-center">
+        <div class="col-md-12">
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+        </div>
+    </div>
+</div>
 <div class="container-fluid px-5 mb-5">
+
     <div class="row">
         <div class="col-md-9 pl-5 mb-5">
-            <h2>Soal Tes Tulis Mata Kulliah Web Programming</h2>
-            <table class="mb-5">
-                <tr>
-                    <td style="width:80px;">Waktu</td>
-                    <td style="width: 30px;">:</td>
-                    <td> <b>60 Menit</b></td>
-                </tr>
-                <tr>
-                    <td style="width:80px;">Tipe Soal</td>
-                    <td style="width: 30px;">:</td>
-                    <td> <b>Isian</b></td>
-                </tr>
-            </table>
-            <form>
+            <h2 class="mb-4">Buat Soal Test</h2>
+            <form method="POST" action="{{ route('soals.store') }}">
+                @csrf
                 <div class="mb-3">
-                    <label for="soaltest" style="font-weight: bold" class="form-label">Soal Test</label>
-                    <div class="mb-4 soaltest py-3 px-3" style="background-color: #f4f4f4;border-radius: 10px">
-                        <table>
-                            <tr>
-                                <td>1. &ThickSpace;</td>
-                                <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, aut sint doloribus
-                                    quae,
-                                    atque ipsum eveniet commodi debitis alias minima suscipit nam eaque praesentium et
-                                    repellat exercitationem tempore ipsa hic?</td>
-                            </tr>
-                            <tr>
-                                <td>2. &ThickSpace;</td>
-                                <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, aut sint doloribus
-                                    quae,
-                                    atque ipsum eveniet commodi debitis alias minima suscipit nam eaque praesentium et
-                                    repellat exercitationem tempore ipsa hic?</td>
-                            </tr>
-                            <tr>
-                                <td>3. &ThickSpace;</td>
-                                <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, aut sint doloribus
-                                    quae,
-                                    atque ipsum eveniet commodi debitis alias minima suscipit nam eaque praesentium et
-                                    repellat exercitationem tempore ipsa hic?</td>
-                            </tr>
-                        </table>
+
+                    <label for="nimPembuat"><b>Aslab Pembuat Soal</b></label>
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <label for="nim">Nama</label>
+                            <input type="text" class="form-control" placeholder="First name" value="{{ $data['name']}}"
+                                disabled>
+                        </div>
+                        <div class="col">
+                            <label for="nim">NIM</label>
+                            <input name="nimPembuat" type="text" class="form-control" placeholder="Last name"
+                                value="{{ $data['nim']}}" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="matkul"><b>Pilihan Mata Kuliah</b></label>
+                        <select class="form-control" id="matkul" name="matkul">
+                            <option value="webpro">Webpro</option>
+                            <option value="std">STD</option>
+                            <option value="pbo">PBO</option>
+                            <option value="sister">Sister</option>
+                            <option value="pbd">PBD</option>
+                        </select>
                     </div>
 
-                    <label for="soaltest" style="font-weight: bold" class="form-label">Jawaban</label>
-                    <div class="form-floating mb-5">
-                        <textarea class="form-control" rows="10"
-                            placeholder="Jawablah soal dengan jawaban yang benar..." id="soal1" name="soal1"></textarea>
+
+
+                    <div class="form-group">
+                        <label for="soal"><b>Soal</b></label>
+                        <textarea class="form-control" id="soal" name="soal" rows="10"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kunciJawaban"><b>Jawaban</b></label>
+                        <textarea class="form-control" id="kunciJawaban" name="kunciJawaban" rows="10"></textarea>
                     </div>
                 </div>
 

@@ -13,8 +13,13 @@
 <div class="container-fluid px-5 mb-5">
     <div class="row">
         <div class="col-md-9 pl-5 mb-5">
-            <h2>Soal Tes Tulis Mata Kulliah Web Programming</h2>
             <table class="mb-5">
+                <tr>
+                    <td style="width:180px;">Mata Kuliah</td>
+                    <td style="width: 30px;">:</td>
+                    <td> <b class="text-primary" style="text-transform: uppercase">
+                            {{$soal['matkul']}}</b></td>
+                </tr>
                 <tr>
                     <td style="width:80px;">Waktu</td>
                     <td style="width: 30px;">:</td>
@@ -26,33 +31,11 @@
                     <td> <b>Isian</b></td>
                 </tr>
             </table>
-            <form>
+            <form method="POST" action="">
                 <div class="mb-3">
                     <label for="soaltest" style="font-weight: bold" class="form-label">Soal Test</label>
                     <div class="mb-4 soaltest py-3 px-3" style="background-color: #f4f4f4;border-radius: 10px">
-                        <table>
-                            <tr>
-                                <td>1. &ThickSpace;</td>
-                                <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, aut sint doloribus
-                                    quae,
-                                    atque ipsum eveniet commodi debitis alias minima suscipit nam eaque praesentium et
-                                    repellat exercitationem tempore ipsa hic?</td>
-                            </tr>
-                            <tr>
-                                <td>2. &ThickSpace;</td>
-                                <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, aut sint doloribus
-                                    quae,
-                                    atque ipsum eveniet commodi debitis alias minima suscipit nam eaque praesentium et
-                                    repellat exercitationem tempore ipsa hic?</td>
-                            </tr>
-                            <tr>
-                                <td>3. &ThickSpace;</td>
-                                <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, aut sint doloribus
-                                    quae,
-                                    atque ipsum eveniet commodi debitis alias minima suscipit nam eaque praesentium et
-                                    repellat exercitationem tempore ipsa hic?</td>
-                            </tr>
-                        </table>
+                        {{$soal['soal']}}
                     </div>
 
                     <label for="soaltest" style="font-weight: bold" class="form-label">Jawaban</label>
@@ -64,29 +47,6 @@
 
                 <button type="submit" class="btn btn-primary float-right">Submit</button>
             </form>
-        </div>
-        <div class="col-md-3">
-            {{-- <div class="card">
-                <div class="card-header">
-                    Nomor Soal
-                </div>
-                <div class="card-body">
-                    <a type="button" class="card-title btn btn-primary">1</a>
-                    <a type="button" class="card-title btn btn-outline-primary">2</a>
-                    <a type="button" class="card-title btn btn-primary">3</a>
-                    <a type="button" class="card-title btn btn-outline-primary">4</a>
-                    <a type="button" class="card-title btn btn-primary">5</a>
-                    <a type="button" class="card-title btn btn-outline-primary">6</a>
-                    <a type="button" class="card-title btn btn-primary">7</a>
-                    <a type="button" class="card-title btn btn-outline-primary">8</a>
-                    <a type="button" class="card-title btn btn-primary">9</a>
-                    <a type="button" class="card-title btn btn-outline-primary">10</a>
-                </div>
-            </div> --}}
-            <div class="time-remaining mt-3 sticky-top">
-                <p class="text-center mb-0 text-primary">Sisa Waktu</p>
-                <h1 class="text-center text-primary" id="demo">-- : --</h1>
-            </div>
         </div>
     </div>
 </div>
