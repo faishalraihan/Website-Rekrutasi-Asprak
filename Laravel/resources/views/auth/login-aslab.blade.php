@@ -1,6 +1,6 @@
-@extends('layout.app')
+@extends('layout.app-aslab')
 
-@section('title','Login')
+@section('title','Login Aslab')
 
 @section('content')
 {{-- @include('includes.navbar') --}}
@@ -9,7 +9,7 @@
         <div class="col-md-5 mx-auto mt-5">
             <div class="card" style="height: 60vh;border: none;">
                 <div class="card-header text-center" style="background-color: #ffe600;">
-                    <h3>Login Asprak</h3>
+                    <h3>Login Aslab</h3>
                 </div>
                 @if(\Session::has('alert'))
                 <div class="alert alert-danger">
@@ -22,7 +22,7 @@
                 </div>
                 @endif
                 <div class="card-body">
-                    <form method="POST" action="{{route('loginPost')}}">
+                    <form method="POST" action="{{route('loginPostAslab')}}">
                         {{-- {{ csrf_field() }} --}}
                         @csrf
                         <div class="form-group">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="card-footer text-muted">
                     Don't have an account?
-                    <a href="{{url('/register')}}">Create Account</a>
+                    <a href="{{url('/register-aslab')}}">Create Account</a>
                 </div>
             </div>
         </div>

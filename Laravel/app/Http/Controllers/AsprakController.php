@@ -38,32 +38,16 @@ class AsprakController extends Controller
                 $password = $request->password;
                 $data = Asprak::where('email', $email)->first();
                 // var_dump($data);
-                if ($data) { //apakah email tersebut ada atau tidak
-                        if (Hash::check($password, $data->password)) {
-                                // Session::put('id', $data->id);
-                                Session::put('nim', $data->nim);
-                                Session::put('name', $data->name);
-                                Session::put('email', $data->email);
-                                Session::put('login', TRUE);
-                                return redirect('asprak');
-                        } else {
-                                return redirect('login')->with('alert', 'Invalid email or passwordd!');
-                        }
-                } else if ($data == null) {
-                        $data = Aslab::where('email', $email)->first();
-                        if ($data) {
-                                if ($password == $data->password) {
-                                        Session::put('nim', $data->nim);
-                                        Session::put('name', $data->name);
-                                        Session::put('email', $data->email);
-                                        Session::put('login', TRUE);
-                                        return redirect('asprak');
-                                } else {
-                                        return redirect('login')->with('alert', 'Invalid email or passwordd!');
-                                }
-                        } else {
-                                return redirect('login')->with('alert', 'Invalid email or passwordd!');
-                        }
+                //apakah email tersebut ada atau tidak
+                if (Hash::check($password, $data->password)) {
+                        // Session::put('id', $data->id);
+                        Session::put('nim', $data->nim);
+                        Session::put('name', $data->name);
+                        Session::put('email', $data->email);
+                        Session::put('login', TRUE);
+                        return redirect('asprak');
+                } else {
+                        return redirect('login')->with('alert', 'Invalid email or passwordd!');
                 }
         }
 

@@ -3,7 +3,6 @@
 @section('title','Web Rekrutasi Asprak')
 
 @section('content')
-
 <div class="jumbotron jumbotron-fluid" style="background: url('img/jumbo-bg2.jpg'); background-size: cover">
     <div class="container text-center">
         <h1 class="mb-3" style="color:whitesmoke">Rekruitasi Asprak</h1>
@@ -111,17 +110,21 @@
     <h2 class="text-center pb-5">Apa sih Keuntungan jadi Asisten Praktikum?</h2>
     <div class="row mb-5">
         <div class="col-sm-4 text-center">
-            <img src="{{url('img/honor.png')}}" class="img-responsive" style="width:30%" alt="Icon by xnimrodx in Flaticon">
+            <img src="{{url('img/honor.png')}}" class="img-responsive" style="width:30%"
+                alt="Icon by xnimrodx in Flaticon">
             <h3 class="text-center">Honor</h3>
             <p>Dapatkan Honor per Jam nya untuk menambah isi Dompet Kalian.</p>
         </div>
         <div class="col-sm-4 text-center">
-            <img src="{{url('img/tak.png')}}" class="img-responsive" style="width:30%" alt="Icon by xnimrodx in Flaticon">
+            <img src="{{url('img/tak.png')}}" class="img-responsive" style="width:30%"
+                alt="Icon by xnimrodx in Flaticon">
             <h3 class="text-center">TAK</h3>
-            <p>TAK yang diperlukan untuk Lulus S1 IF adalah 60, menjadi Asprak maka kalian akan mendapatkan +15 Poin TAK.</p>
+            <p>TAK yang diperlukan untuk Lulus S1 IF adalah 60, menjadi Asprak maka kalian akan mendapatkan +15 Poin
+                TAK.</p>
         </div>
         <div class="col-sm-4 text-center">
-            <img src="{{url('img/certificate.png')}}" class="img-responsive" style="width:30%" alt="Icon by xnimrodx in Flaticon">
+            <img src="{{url('img/certificate.png')}}" class="img-responsive" style="width:30%"
+                alt="Icon by xnimrodx in Flaticon">
             <h3 class="text-center">Certificate</h3>
             <p>Tambah pengalaman di portfolio kalian dengan menggunakan Sertifikat yang kami berikan.</p>
         </div>

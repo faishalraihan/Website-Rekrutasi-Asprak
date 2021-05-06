@@ -14,7 +14,8 @@ class SoalController extends Controller
      */
     public function index()
     {
-        //
+        $soals = Soal::all();
+        return view('pages.listSoal')->with('soals', $soals);
     }
 
     /**
@@ -22,9 +23,11 @@ class SoalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data['nim'] = $request->session()->get('nim');
+        $data['name'] = $request->session()->get('name');
+        return view('pages.buatSoal')->with("data", $data);
     }
 
     /**
@@ -35,7 +38,13 @@ class SoalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $add_soal = new Soal;
+        $add_soal->soal = $request->get('soal');
+        $add_soal->kunciJawaban = $request->get('kunciJawaban');
+        $add_soal->nimPembuat = $request->get('nimPembuat');
+        $add_soal->matkul = $request->get('matkul');
+        $add_soal->save();
+        return redirect()->route('soals.create')->with('success', 'Soal Behasil Dibuat');
     }
 
     /**
@@ -44,9 +53,10 @@ class SoalController extends Controller
      * @param  \App\Models\Soal  $soal
      * @return \Illuminate\Http\Response
      */
-    public function show(Soal $soal)
+    public function show($id)
     {
-        //
+        $soal = Soal::findOrFail($id);
+        return view('pages.testTulis', ['soal' => $soal]);
     }
 
     /**
