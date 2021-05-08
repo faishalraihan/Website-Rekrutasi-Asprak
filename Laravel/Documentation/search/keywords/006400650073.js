@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("des",["Function"],[["destroy",,[[,,,,0,"File:SoalController.php:destroy"]]]]);
