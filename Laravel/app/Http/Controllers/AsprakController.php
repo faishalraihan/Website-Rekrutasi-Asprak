@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Session;
 
 class AsprakController extends Controller
 {
+        /* Function: Index
+
+        Melakukan pengecekan terhadap pengguna apakah sudah melakukan Login atau Belum.
+
+        */
         public function index()
         {
                 if (!Session::get('login')) {
@@ -21,16 +26,47 @@ class AsprakController extends Controller
                 }
         }
 
+        /* Function: Login
+
+        Mengarahkan pengguna ke Halaman Login.
+
+        Returns:
+
+        Tampilan dialihkan ke halaman Login.
+
+        */
         public function login()
         {
                 return view('auth.login');
         }
 
+        /* Function: Register
+
+        Mengarahkan pengguna ke Halaman Login
+
+        Returns:
+
+        Tampilan dialihkan ke halaman Register.
+
+        */
         public function register()
         {
                 return view('auth.register');
         }
 
+        /* Function: LoginPost
+
+        Autentikasi Login pengguna.
+
+        Parameters:
+
+        $request - Nilai input pengguna saat Login (Email, Password, Data).
+
+        Returns:
+
+        Apabila Email dan Password yang dimasukkan benar maka pengguna akan dialihkan ke Halaman Asprak, Jika tidak maka akan menampilkan bahwa inputan salah.
+
+        */
         public function loginPost(Request $request)
         {
                 $email = $request->email;
@@ -51,6 +87,15 @@ class AsprakController extends Controller
                 }
         }
 
+        /* Function: Logout
+
+        Keluar dari Akun Pengguna.
+
+        Returns:
+
+        Tampilan dialihkan ke Halaman Login dan Pengguna sudah Keluar dari Akun nya.
+
+        */
         public function logout()
         {
                 Session::flush();
@@ -69,6 +114,20 @@ class AsprakController extends Controller
          * @param  \Illuminate\Http\Request  $request
          * @return \Illuminate\Http\Response
          */
+
+        /* Function: Store
+
+        Untuk melakukan Registrasi Akun.
+
+        Parameters:
+
+        $request - Nilai input pengguna saat Registrasi (Nim, Nama, Email, Password).
+
+        Returns:
+
+        Menambahkan Akun baru ke dalam Database Asprak dan dapat digunakan pada saat login.
+
+        */
         public function store(Request $request)
         {
                 $this->validate($request, [
@@ -89,6 +148,20 @@ class AsprakController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
+
+        /* Function: Show
+
+        Untuk menempilkan User.
+
+        Parameters:
+
+        $id - ID Pengguna berdasarkan Database Asprak.
+
+        Returns:
+
+        Menampilkan Nama User.
+
+        */
         public function show($id)
         {
                 $user = Asprak::find($id);
@@ -101,6 +174,7 @@ class AsprakController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
+
         public function edit($id)
         {
         }
@@ -115,11 +189,30 @@ class AsprakController extends Controller
         public function update(Request $request, $id)
         {
         }
+
+        /* Function: TestTulis
+
+        Untuk melakukan Tes Tulis bagi Asprak.
+
+        Returns:
+
+        Menampilkan Halaman Tes Tulis.
+
+        */
         public function testTulis()
         {
                 return view('pages.testTulis');
         }
 
+        /* Function: DaftarAsprak
+
+        Untuk melakukan Pendaftaran Asprak.
+
+        Returns:
+
+        Menampilkan Halaman Pendaftaran Asprak.
+
+        */
         public function daftarAsprak()
         {
                 // $asprak = Asprak::find($id);
@@ -131,6 +224,15 @@ class AsprakController extends Controller
                 }
         }
 
+        /* Function: Dashboard
+
+        Untuk menampilkan Dashboard ASprak.
+
+        Returns:
+
+        Menampilkan Halaman Dashboard milik Asprak.
+
+        */
         public function dashboard()
         {
                 $nim = Session::get('nim');

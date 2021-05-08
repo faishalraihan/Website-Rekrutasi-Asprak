@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("sho",["Function"],[["Show",,[[,,,,0,"File:AsprakController.php:Show"]]]]);

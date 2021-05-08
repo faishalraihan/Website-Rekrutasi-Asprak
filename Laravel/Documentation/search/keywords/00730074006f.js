@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("sto",["Function"],[["Store",,[[,,,,0,"File:AsprakController.php:Store"]]]]);

@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("das",["Function"],[["Dashboard",,[[,,,,0,"File:AsprakController.php:Dashboard"]]]]);

@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("ind",["Function"],[["Index",,[[,,,,0,"File:AsprakController.php:Index"]]]]);

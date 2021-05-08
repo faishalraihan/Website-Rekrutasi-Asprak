@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("daf",["Function"],[["DaftarAsprak",,[[,,,,0,"File:AsprakController.php:DaftarAsprak"]]]]);

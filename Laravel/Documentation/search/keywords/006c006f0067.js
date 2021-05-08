@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("log",["Function"],[["Login",,[[,,,,0,"File:AsprakController.php:Login"]]],["LoginPost",,[[,,,,0,"File:AsprakController.php:LoginPost"]]],["Logout",,[[,,,,0,"File:AsprakController.php:Logout"]]]]);
