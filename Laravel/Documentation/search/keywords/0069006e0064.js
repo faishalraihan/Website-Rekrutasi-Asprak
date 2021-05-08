@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("ind",["Function"],[["index",,[[,,,,0,"File:SoalController.php:index"]]]]);
