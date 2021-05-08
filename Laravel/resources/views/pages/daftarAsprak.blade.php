@@ -16,7 +16,7 @@
            
     </div>
     
-    <form method="POST" action="/daftar" enctype="multipart/form-data">
+    <form method="POST" action="{{url('/daftar')}}" enctype="multipart/form-data">
         <div class="row mx-5">
             {{ csrf_field() }}
             <div class="col-md-6">
@@ -90,7 +90,7 @@
                     </div>
                     @if ($errors->has('berkas'))
                             <span class="help-block">
-                                <small class="alert">{{ $errors->first('berkas') }}</small>
+                                <small style="color:rgb(255, 34, 34)">{{ $errors->first('berkas') }}</small>
                             </span>
                         @endif
                 </div>

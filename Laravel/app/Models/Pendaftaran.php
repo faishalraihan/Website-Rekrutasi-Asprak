@@ -37,22 +37,22 @@ class Pendaftaran extends Model
         public static function insert(Request $request)
         {
                 Pendaftaran::create([
-                        // 'email' => $request->email,
-                        // 'name' => $request->name,
-                        // 'nim' => $request->nim,
-                        // 'jurusan' => $request->jurusan,
-                        // 'angkatan' => $request->angkatan,
-                        // 'kelas' => $request->kelas,
-                        // 'pilihan_praktikum' => $request->pilihan_praktikum,
-                        // 'berkas' => $request->berkas
-                        'email' => $request['email'],
-                        'name' => $request['name'],
-                        'nim' => $request['nim'],
-                        'jurusan' => $request['jurusan'],
-                        'angkatan' => $request['angkatan'],
-                        'kelas' => $request['kelas'],
-                        'pilihan_praktikum' => $request['pilihan_praktikum'],
-                        'berkas' => $request['berkas']
+                        'email' => Session::get('email'),
+                        'name' => Session::get('name'),
+                        'nim' => Session::get('nim'),
+                        'jurusan' => $request->jurusan,
+                        'angkatan' => $request->angkatan,
+                        'kelas' => $request->kelas,
+                        'pilihan_praktikum' => $request->pilihan_praktikum,
+                        'berkas' => $request->berkas
+                        // 'email' => $request['email'],
+                        // 'name' => $request['name'],
+                        // 'nim' => $request['nim'],
+                        // 'jurusan' => $request['jurusan'],
+                        // 'angkatan' => $request['angkatan'],
+                        // 'kelas' => $request['kelas'],
+                        // 'pilihan_praktikum' => $request['pilihan_praktikum'],
+                        // 'berkas' => $request['berkas']
                 ]);
         }
 
