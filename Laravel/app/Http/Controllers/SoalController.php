@@ -57,6 +57,8 @@ class SoalController extends Controller
         $add_soal->nimPembuat = $request->get('nimPembuat');
         $add_soal->matkul = $request->get('matkul');
         $add_soal->save();
+        $add_soal->id_soal = "soal_" . $add_soal->matkul . "_" . $add_soal->id;
+        $add_soal->save();
         return redirect()->route('soals.create')->with('success', 'Soal Behasil Dibuat');
     }
 

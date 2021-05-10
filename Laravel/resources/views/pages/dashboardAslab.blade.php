@@ -59,6 +59,30 @@
                             <h6>: {{$data->email}}</h6>
                         </td>
                     </tr>
+                    <tr>
+                        <td style="width: 20px;">
+                            <h6>Jurusan</h6>
+                        </td>
+                        <td>
+                            <h6>: {{$data->jurusan}}</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20px;">
+                            <h6>Angkatan</h6>
+                        </td>
+                        <td>
+                            <h6>: {{$data->angkatan}}</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20px;">
+                            <h6>Kode</h6>
+                        </td>
+                        <td>
+                            <h6>: {{$data->kode}}</h6>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -69,7 +93,7 @@
                         style="border-radius: 0.7; width: 100px">Soal</a>
                 </div>
                 <div class="col-md-5">
-                    <a href="#" class="btn btn-outline-info float-right"
+                    <a href="{{ route('listPendaftar') }}" class="btn btn-outline-info float-right"
                         style="border-radius: 0.7; width: 100px">Pendaftar</a>
                 </div>
             </div>
@@ -79,7 +103,7 @@
                 </div>
                 <div class="col-md-5">
                     <a href="{{route('listAsprak')}}" class="btn btn-outline-info float-right"
-                        style="border-radius: 0.7; width: 100px">Asprak</a>
+                        style="border-radius: 0.7; width: 100px">Akun</a>
                 </div>
             </div>
         </div>

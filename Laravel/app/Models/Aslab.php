@@ -10,14 +10,14 @@ use Illuminate\Notifications\Notifiable;
 class Aslab extends Authenticatable
 {
         use Notifiable;
-
+        protected $table = 'aslabs';
         /**
          * The attributes that are mass assignable.
          *
          * @var array
          */
         protected $fillable = [
-                'nim', 'name', 'email', 'password',
+                'nim', 'name', 'email', 'password', 'jurusan', 'angkatan', 'kelas', 'kode'
         ];
 
         /**
@@ -53,6 +53,10 @@ class Aslab extends Authenticatable
                         'name' => $request->name,
                         'email' => $request->email,
                         'password' => bcrypt($request->password),
+                        'jurusan' => $request->jurusan,
+                        'angkatan' => $request->angkatan,
+                        'kelas' => $request->kelas,
+                        'kode' => NULL,
                 ]);
         }
 }

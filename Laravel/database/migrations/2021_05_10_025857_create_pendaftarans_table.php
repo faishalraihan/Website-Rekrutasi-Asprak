@@ -15,15 +15,14 @@ class CreatePendaftaransTable extends Migration
     {
         Schema::create('pendaftarans', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('id_pendaftaran')->nullable();
             $table->string('email');
             $table->string('name');
             $table->string('nim');
-            $table->foreign('nim')->references('nim')->on('aspraks');
-            $table->string('jurusan');
-            $table->string('angkatan');
-            $table->string('kelas');
             $table->string('pilihan_praktikum');
             $table->string('berkas');
+            $table->string('id_test')->nullable();
+
             $table->timestamps();
         });
     }

@@ -45,11 +45,14 @@
                     <div class="form-group">
                         <label for="matkul"><b>Pilihan Mata Kuliah</b></label>
                         <select class="form-control" id="matkul" name="matkul">
-                            <option value="webpro">Webpro</option>
-                            <option value="std">STD</option>
-                            <option value="pbo">PBO</option>
-                            <option value="sister">Sister</option>
-                            <option value="pbd">PBD</option>
+                            <option selected>Open this select menu</option>
+                            <option value="dap">DAP</option>
+                            <option value="appl">APPL</option>
+                            <option value="webpro">Website Programming</option>
+                            <option value="std">Struktur Data</option>
+                            <option value="pbo">Pemrograman Berbasis Object</option>
+                            <option value="sister">Sistem Paralel dan Terdistribusi</option>
+                            <option value="pbd">Pemodelan Basis Data</option>
                         </select>
                     </div>
 
