@@ -34,6 +34,7 @@ class Pendaftaran extends Model
          * 
          * @return void
          */
+
         // public static function insert(Request $request)
         // {
         //         Pendaftaran::create([
@@ -55,6 +56,7 @@ class Pendaftaran extends Model
         //                 // 'berkas' => $request['berkas']
         //         ]);
         // }
+
 
         // public function asprak()
         // {

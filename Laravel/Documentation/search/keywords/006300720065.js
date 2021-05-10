@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("cre",["Function"],[["create",,[[,,,,0,"File:SoalController.php:create"]]]]);

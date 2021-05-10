@@ -28,7 +28,9 @@
 
     </div>
 
+
     <form method="POST" action="{{ route('pendaftarans.store') }}" enctype="multipart/form-data">
+
         <div class="row mx-5">
             {{ csrf_field() }}
             <div class="col-md-6">
@@ -83,10 +85,12 @@
                         </div>
                     </div>
                     @if ($errors->has('berkas'))
-                    <span class="help-block">
-                        <small class="alert">{{ $errors->first('berkas') }}</small>
-                    </span>
+
+                            <span class="help-block">
+                                <small style="color:rgb(255, 34, 34)">{{ $errors->first('berkas') }}</small>
+                            </span>
                     @endif
+
                 </div>
                 <button type="submit" class="btn btn-info mt-4 mb-5" style="width: 100%;">Daftar</button>
             </div>

@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("edi",["Function"],[["edit",,[[,,,,0,"File:SoalController.php:edit"]]]]);

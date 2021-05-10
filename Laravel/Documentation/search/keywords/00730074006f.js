@@ -1,1 +1,1 @@
-﻿NDSearch.OnPrefixDataLoaded("sto",["Function"],[["store",,[[,,,,0,"File:SoalController.php:store"]]]]);
+﻿NDSearch.OnPrefixDataLoaded("sto",["Function"],[["store",,[[,,,,0,"File:PendaftaranController.php:store"]]]]);

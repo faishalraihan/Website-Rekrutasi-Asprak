@@ -9,19 +9,16 @@ use Illuminate\Support\Facades\Session;
 
 class PendaftaranController extends Controller
 {
-        public function index()
-        {
-                if (!Session::get('login')) {
-                        return redirect('login')->with('alert', 'Please log in or register first');
-                } else {
-                        return view('pages.homepage');
-                }
-        }
+        /* Function: daftarAsprak
 
+        Function Untuk Mengalihkan ke page daftar asprak
 
+        Returns:
+
+        return pages daftar asprak untuk pendaftaran asprak
+        */
         public function daftarAsprak()
         {
-                // $asprak = Asprak::find($id);
                 if (Session::has('nim')) {
 
                         return view('pages.daftarAsprak');
@@ -30,9 +27,23 @@ class PendaftaranController extends Controller
                 }
         }
 
+
+        /* Function: store
+
+        Function Untuk Menyimpan data yang telah diinput di dalam database
+
+        Parameters:
+
+        $request - request dari halaman web saat melakukan input data di form
+
+        Returns:
+
+        return pages homepage
+        */
         public function store(Request $request)
         {
                 $request->validate([
+
                         'email' => 'required|min:4|email|unique:users',
                         'name' => 'required|min:4',
                         'nim' => 'required|max:10',
@@ -64,8 +75,5 @@ class PendaftaranController extends Controller
                 // $add_test->jawaban = $request->get('jawaban');
                 // $add_test->status = true;
                 // return redirect()->route('asprak.dashboard')->with('success', 'Anda Sudah menyelesaikan Test');
-
-                // echo ($request);
-                // Pendaftaran::insert($request);
         }
 }

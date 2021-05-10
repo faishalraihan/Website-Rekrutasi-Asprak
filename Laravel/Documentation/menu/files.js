@@ -1,1 +1,1 @@
-﻿NDMenu.OnSectionLoaded("files.js",[[1,"SoalController.php"]]);
+﻿NDMenu.OnSectionLoaded("files.js",[[1,"PendaftaranController.php"]]);

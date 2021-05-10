@@ -8,7 +8,7 @@
 # Project Information
 # ------------------------------------------------------------------------
 
-Title: Web Rekrutasi Asprak
+Title: [Website Rekrutasi Asprak]
 
 
 # This is where you specify general information about your project.
