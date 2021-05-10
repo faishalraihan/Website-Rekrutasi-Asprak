@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAsprakTable extends Migration
+class CreateAslabsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateAsprakTable extends Migration
      */
     public function up()
     {
-        Schema::create('aspraks', function (Blueprint $table) {
+        Schema::create('aslabs', function (Blueprint $table) {
             $table->string('nim')->primary();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('jurusan');
+            $table->string('angkatan');
+            $table->string('kelas');
+            $table->string('kode')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ class CreateAsprakTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aspraks');
+        Schema::dropIfExists('aslabs');
     }
 }

@@ -16,7 +16,7 @@ class Pendaftaran extends Model
          * @var array
          */
         protected $fillable = [
-                'email', 'name', 'nim', 'jurusan', 'angkatan', 'kelas', 'pilihan_praktikum', 'berkas'
+                'email', 'name', 'nimPendaftar', 'pilihan_praktikum', 'berkas', 'id_pendaftaran', 'id_test'
         ];
 
         /**
@@ -34,27 +34,29 @@ class Pendaftaran extends Model
          * 
          * @return void
          */
-        public static function insert(Request $request)
-        {
-                Pendaftaran::create([
-                        'email' => Session::get('email'),
-                        'name' => Session::get('name'),
-                        'nim' => Session::get('nim'),
-                        'jurusan' => $request->jurusan,
-                        'angkatan' => $request->angkatan,
-                        'kelas' => $request->kelas,
-                        'pilihan_praktikum' => $request->pilihan_praktikum,
-                        'berkas' => $request->berkas
-                        // 'email' => $request['email'],
-                        // 'name' => $request['name'],
-                        // 'nim' => $request['nim'],
-                        // 'jurusan' => $request['jurusan'],
-                        // 'angkatan' => $request['angkatan'],
-                        // 'kelas' => $request['kelas'],
-                        // 'pilihan_praktikum' => $request['pilihan_praktikum'],
-                        // 'berkas' => $request['berkas']
-                ]);
-        }
+
+        // public static function insert(Request $request)
+        // {
+        //         Pendaftaran::create([
+        //                 'email' => $request->email,
+        //                 'name' => $request->name,
+        //                 'nim' => $request->nim,
+        //                 'jurusan' => $request->jurusan,
+        //                 'angkatan' => $request->angkatan,
+        //                 'kelas' => $request->kelas,
+        //                 'pilihan_praktikum' => $request->pilihan_praktikum,
+        //                 'berkas' => $request->berkas
+        //                 // 'email' => $request['email'],
+        //                 // 'name' => $request['name'],
+        //                 // 'nim' => $request['nim'],
+        //                 // 'jurusan' => $request['jurusan'],
+        //                 // 'angkatan' => $request['angkatan'],
+        //                 // 'kelas' => $request['kelas'],
+        //                 // 'pilihan_praktikum' => $request['pilihan_praktikum'],
+        //                 // 'berkas' => $request['berkas']
+        //         ]);
+        // }
+
 
         // public function asprak()
         // {

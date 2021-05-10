@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHasilTable extends Migration
+class CreateTestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateHasilTable extends Migration
      */
     public function up()
     {
-        Schema::create('hasils', function (Blueprint $table) {
+        Schema::create('tests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_test');
-            $table->integer('nilai');
+            $table->string('id_test');
+            $table->string('id_soal')->nullable();
+            $table->string('id_pendaftaran');
+            $table->string('jawaban')->nullable();
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateHasilTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hasil');
+        Schema::dropIfExists('tests');
     }
 }

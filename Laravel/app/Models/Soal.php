@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Soal extends Model
 {
+
+    protected $table = 'soals';
+
     protected $fillable = [
-        'soal', 'kunciJawaban', 'nimPembuat', 'matkul'
+        'soal', 'kunciJawaban', 'nimPembuat', 'matkul', 'id_soal'
     ];
 }

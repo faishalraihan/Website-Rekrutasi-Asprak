@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendaftaran;
 use App\Models\Test;
+use App\Models\Asprak;
+use App\Models\Soal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class TestController extends Controller
 {
@@ -12,9 +17,19 @@ class TestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id_test)
     {
-        //
+        if (!Session::get('login')) {
+            return redirect('login')->with('alert', 'Please log in or register first');
+        } else {
+            $nim = Session::get('nim');
+            // var_dump($nim);
+            $data['session'] = Asprak::where('nim', $nim)->first();
+            $data['pendaftaran'] = Pendaftaran::where('nim', $nim)->first();
+            $data['id_test'] = Pendaftaran::where('id_test', $id_test)->first();
+            $data['soal'] = Soal::where('id_test', $id_test)->first();
+            return view('pages.testTulis', compact('data'));
+        }
     }
 
     /**
@@ -33,9 +48,9 @@ class TestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id_test)
     {
-        //
+        // 
     }
 
     /**
@@ -44,9 +59,19 @@ class TestController extends Controller
      * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function show(Test $test)
+    public function show($id_test)
     {
-        //
+        if (!Session::get('login')) {
+            return redirect('login')->with('alert', 'Please log in or register first');
+        } else {
+            $nim = Session::get('nim');
+            // var_dump($nim);
+            $dataTest['session'] = Asprak::where('nim', $nim)->first();
+            // $dataTest['pendaftaran'] = Pendaftaran::where('nim', $nim)->first();
+
+            $dataTest['id_test'] = Pendaftaran::where('id_test', $id_test)->first();
+            return view('pages.testTulis', compact('dataTest'));
+        }
     }
 
     /**
@@ -69,7 +94,6 @@ class TestController extends Controller
      */
     public function update(Request $request, Test $test)
     {
-        //
     }
 
     /**
