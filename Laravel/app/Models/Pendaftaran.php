@@ -16,7 +16,11 @@ class Pendaftaran extends Model
          * @var array
          */
         protected $fillable = [
+<<<<<<< Updated upstream
                 'email', 'name', 'nim', 'jurusan', 'angkatan', 'kelas', 'pilihan_praktikum', 'berkas'
+=======
+                'email', 'name', 'nim', 'pilihan_praktikum', 'berkas', 'id_pendaftaran', 'id_test'
+>>>>>>> Stashed changes
         ];
 
         /**
