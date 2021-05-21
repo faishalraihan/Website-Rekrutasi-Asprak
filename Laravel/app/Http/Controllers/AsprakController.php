@@ -126,7 +126,7 @@ class AsprakController extends Controller
                         $nim = Session::get('nim');
                         // var_dump($nim);
                         $data['session'] = Asprak::where('nim', $nim)->first();
-                        $data['pendaftaran'] = Pendaftaran::where('nim', $nim)->first();
+                        $data['pendaftaran'] = Pendaftaran::where('nimPendaftar', $nim)->first();
                         $data['id_test'] = Pendaftaran::where('id_test', $id_test)->first();
                         return view('pages.testTulis', compact('data'));
                 }
@@ -145,16 +145,18 @@ class AsprakController extends Controller
 
         public function dashboard()
         {
+                // $nim = Session::get('nim');
+                // var_dump($nim);
+                // $dataP = Pendaftaran::where('nimPendaftar', $nim)->first();
+                //var_dump($dataP);
+                // if ($dataP) {
+                //         Session::put('nim', $dataP->nim);
+                //         return view('pages.dashboard', ['dataP' => $dataP]);
+                // } else {
                 $nim = Session::get('nim');
                 // var_dump($nim);
-                $dataP = Pendaftaran::where('nim', $nim)->first();
-                //var_dump($dataP);
-                if ($dataP) {
-                        Session::put('nimPendaftar', $dataP->nim);
-                        return view('pages.dashboard', ['dataP' => $dataP]);
-                } else {
-                        $data = Asprak::where('nim', $nim)->first();
-                        return view('pages.dashboard', ['data' => $data]);
-                }
+                $data = Asprak::where('nim', $nim)->first();
+                return view('pages.dashboard', compact('data'));
+                // }
         }
 }

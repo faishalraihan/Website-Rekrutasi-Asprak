@@ -9,7 +9,7 @@
         <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
     </div>
 </div>
-@if(Session::has('nimPendaftar'))
+@if(Session::has('nim'))
 <div class="container-fluid px-5 mb-5">
     <div class="row">
         <div class="col-md-3">
@@ -198,7 +198,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <h2>{{$data->name}}</h2>
+                            <h2>{{ $data->name }}</h2>
                             <hr>
                         </td>
                     </tr>

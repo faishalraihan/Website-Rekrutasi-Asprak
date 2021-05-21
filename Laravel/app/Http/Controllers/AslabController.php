@@ -58,7 +58,7 @@ class AslabController extends Controller
             Session::put('login', TRUE);
             return redirect('aslab');
         } else {
-            return redirect('login-aslab')->with('alert', 'Invalid email or passwordd!');
+            return redirect()->route('loginAslab')->with('alert', 'Invalid email or passwordd!');
         }
     }
 
@@ -97,19 +97,31 @@ class AslabController extends Controller
 
     public function listAsprak()
     {
-        $list_asprak = Asprak::all();
-        return view('pages.listAsprak', compact('list_asprak'));
+        if (Session::has('nim')) {
+
+            $list_asprak = Asprak::all();
+            return view('pages.listAsprak', compact('list_asprak'));
+        } else {
+            return redirect()->route('loginAslab')->with('alert', 'Please log in first');
+        }
     }
 
     public function listPendaftar()
     {
-        // $data['list_pendaftar'] = Pendaftaran::all();s
-        $data['test'] = DB::table('pendaftarans')
-            ->join('tests', 'pendaftarans.id_pendaftaran', '=', 'tests.id_pendaftaran')
-            // ->select('users.*', 'contacts.phone', 'orders.price')
-            ->get();
+        if (Session::has('nim')) {
+            $data['test'] = DB::table('pendaftarans')
+                ->join('tests', 'pendaftarans.id_pendaftaran', '=', 'tests.id_pendaftaran')
+                ->get();
+            return view('pages.listPendaftar')->with($data);
+        } else {
+            return redirect()->route('loginAslab')->with('alert', 'Please log in first');
+        }
+    }
 
-        return view('pages.listPendaftar')->with($data);
+    public function logout()
+    {
+        Session::flush();
+        return redirect()->route('loginAslab')->with('alert', 'Log out Succes');
     }
 
     /**

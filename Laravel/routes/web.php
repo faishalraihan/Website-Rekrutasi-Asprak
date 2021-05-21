@@ -18,11 +18,12 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::get('dashboardAslab', 'AslabController@index')->name('dashboardAslab');
+Route::get('dashboard-aslab', 'AslabController@index')->name('dashboardAslab');
 Route::get('list-pendaftar', 'AslabController@listPendaftar')->name('listPendaftar');
-Route::get('/listAsprak', 'AslabController@listAsprak')->name('listAsprak');
+Route::get('/list-asprak', 'AslabController@listAsprak')->name('listAsprak');
 Route::get('/login-aslab', 'AslabController@login')->name('loginAslab');
 Route::post('/loginPost-aslab', 'AslabController@loginPost')->name('loginPostAslab');
+Route::get('/logout-aslab', 'AslabController@logout')->name('logoutAslab');
 Route::get('/register-aslab', 'AslabController@register')->name('registerAslab');
 Route::post('/store-aslab', 'AslabController@store');
 
