@@ -77,6 +77,9 @@ class AsprakController extends Controller
                         'email' => 'required|min:4|email|unique:aspraks',
                         'password' => 'required',
                         'password_confirmation' => 'required|same:password',
+                        'jurusan' => 'required|min:4',
+                        'angkatan' => 'required|min:4',
+                        'kelas' => 'required|min:4',
                 ]);
 
                 Asprak::insert($request);
@@ -130,9 +133,18 @@ class AsprakController extends Controller
                         return redirect('login')->with('alert', 'Please log in or register first');
                 }
         }
-        public function testTulis()
+        public function testTulis($id_test)
         {
-                return view('pages.testTulis');
+                if (!Session::get('login')) {
+                        return redirect('login')->with('alert', 'Please log in or register first');
+                } else {
+                        $nim = Session::get('nim');
+                        // var_dump($nim);
+                        $data['session'] = Asprak::where('nim', $nim)->first();
+                        $data['pendaftaran'] = Pendaftaran::where('nim', $nim)->first();
+                        $data['id_test'] = Pendaftaran::where('id_test', $id_test)->first();
+                        return view('pages.testTulis', compact('data'));
+                }
         }
 
         public function daftarAsprak()

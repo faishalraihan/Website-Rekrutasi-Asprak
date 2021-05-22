@@ -12,6 +12,18 @@
     </div>
 </div>
 
+<div class="container">
+    <div class="row text-center">
+        <div class="col-md-12">
+            @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+            @endif
+        </div>
+    </div>
+</div>
+
 <div class="container mx-auto">
     <h2 class="text-center pb-5">Alur Pendaftaran</h2>
     <div class="row">

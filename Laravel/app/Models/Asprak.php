@@ -11,14 +11,14 @@ use Illuminate\Notifications\Notifiable;
 class Asprak extends Authenticatable
 {
         use Notifiable;
-
+        protected $table = 'aspraks';
         /**
          * The attributes that are mass assignable.
          *
          * @var array
          */
         protected $fillable = [
-                'nim', 'name', 'email', 'password',
+                'nim', 'name', 'email', 'password', 'jurusan', 'angkatan', 'kelas', 'kode', 'periode'
         ];
 
         /**
@@ -54,6 +54,11 @@ class Asprak extends Authenticatable
                         'name' => $request->name,
                         'email' => $request->email,
                         'password' => bcrypt($request->password),
+                        'jurusan' => $request->jurusan,
+                        'angkatan' => $request->angkatan,
+                        'kelas' => $request->kelas,
+                        'kode' => NULL,
+                        'periode' => NULL,
                 ]);
         }
         public static function updateProfile(Request $request, $nim)

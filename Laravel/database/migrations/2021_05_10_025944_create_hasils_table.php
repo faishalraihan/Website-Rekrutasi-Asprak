@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAslabTable extends Migration
+class CreateHasilsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateAslabTable extends Migration
      */
     public function up()
     {
-        Schema::create('aslabs', function (Blueprint $table) {
-            $table->string('nim')->primary();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
+        Schema::create('hasils', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('id_hasil');
+            $table->string('id_test');
+            $table->string('id_pendaftaran');
+            $table->integer('nilai');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateAslabTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aslab');
+        Schema::dropIfExists('hasils');
     }
 }

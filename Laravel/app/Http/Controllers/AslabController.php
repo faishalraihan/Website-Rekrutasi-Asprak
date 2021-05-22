@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Aslab;
+use App\Models\Asprak;
+use App\Models\Pendaftaran;
+use App\Models\Test;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -18,7 +22,7 @@ class AslabController extends Controller
     public function index()
     {
         if (!Session::get('login')) {
-            return redirect('login')->with('alert', 'Please log in or register first');
+            return redirect('loginAslab')->with('alert', 'Please log in or register first');
         } else {
             $nim = Session::get('nim');
             // var_dump($nim);
@@ -88,13 +92,24 @@ class AslabController extends Controller
         ]);
 
         Aslab::insert($request);
-        return redirect('login')->with('alert-success', 'Register succes');
+        return redirect()->route('loginAslab')->with('alert-success', 'Register succes');
     }
 
     public function listAsprak()
     {
-        $list_asprak = Aslab::all();
+        $list_asprak = Asprak::all();
         return view('pages.listAsprak', compact('list_asprak'));
+    }
+
+    public function listPendaftar()
+    {
+        // $data['list_pendaftar'] = Pendaftaran::all();s
+        $data['test'] = DB::table('pendaftarans')
+            ->join('tests', 'pendaftarans.id_pendaftaran', '=', 'tests.id_pendaftaran')
+            // ->select('users.*', 'contacts.phone', 'orders.price')
+            ->get();
+
+        return view('pages.listPendaftar')->with($data);
     }
 
     /**
