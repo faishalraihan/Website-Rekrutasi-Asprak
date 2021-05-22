@@ -102,7 +102,55 @@
 
                 </tbody>
             </table>
-            <h5 class="mt-5 php mb-3">Jadwal Jaga</h5>
+
+            <h3 class="mt-5 php mb-3">Tes Tulis</h3>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="jadwal-harian mb-4">
+                            <table class="table text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Mata Kuliah</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Test</th>
+                                    </tr>
+                                <tbody>
+                                    {{-- <td>{{dd($dataT)}}</td> --}}
+                                    @foreach ($dataT as $datatest)
+                                    <tr>
+                                        <td style="text-transform: uppercase;font-weight: bold">
+                                            {{$datatest->pilihan_praktikum}}</td>
+                                        <td>
+                                            @if ($datatest->status == NULL)
+                                            <p class="btn btn-outline-warning">Belum Test</p>
+                                            @else
+                                            <p class="btn btn-primary">Sudah Test</p>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($datatest->status == NULL)
+                                            <a href="{{route('tests.show',$datatest->id_test)}}"
+                                                class="btn btn-outline-success">Kerjakan Test</a>
+                                            @else
+                                            <a>Menunggu Hasil</a>
+                                            @endif
+
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                                </thead>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            {{-- <h5 class="mt-5 php mb-3">Jadwal Jaga</h5>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -154,7 +202,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="col-md-3">
             <div class="card">
@@ -196,11 +244,9 @@
                 <tbody>
                     <tr>
                         <td>
-                            <<<<<<< Updated upstream <h2>{{ $data->name }}</h2>
-                                =======
-                                <h2>{{ $dataP->name }}</h2>
-                                >>>>>>> Stashed changes
-                                <hr>
+
+                            <h2>{{ $dataP->name }}</h2>
+                            <hr>
                         </td>
                     </tr>
                     <tr>

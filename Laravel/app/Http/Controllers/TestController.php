@@ -6,6 +6,7 @@ use App\Models\Pendaftaran;
 use App\Models\Test;
 use App\Models\Asprak;
 use App\Models\Soal;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -66,11 +67,20 @@ class TestController extends Controller
         } else {
             $nim = Session::get('nim');
             // var_dump($nim);
-            $dataTest['session'] = Asprak::where('nim', $nim)->first();
-            // $dataTest['pendaftaran'] = Pendaftaran::where('nim', $nim)->first();
+            // $dataTest['session'] = Asprak::where('nim', $nim)->first();
+            // $dataTest['pendaftaran'] = Pendaftaran::where('nimPendaftar', $nim)->get();
 
-            $dataTest['id_test'] = Pendaftaran::where('id_test', $id_test)->first();
-            return view('pages.testTulis', compact('dataTest'));
+
+
+
+            $dataTest['data'] = DB::table('pendaftarans')
+                ->join('tests', 'pendaftarans.id_test', '=', 'tests.id_test') //->where('nimPendaftar', $nim)->first();
+                ->join('soals', 'tests.id_soal', '=', 'soals.id_soal')
+                ->select('pendaftarans.*', 'tests.*', 'soals.*')
+                ->where('pendaftarans.id_test', '=', $id_test)
+                ->first();
+            // $dataTest['id_test'] = Pendaftaran::where('id_test', $id_test)->first();
+            return view('pages.testTulis')->with('data', $dataTest);
         }
     }
 

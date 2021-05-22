@@ -27,6 +27,7 @@ Route::get('/logout-aslab', 'AslabController@logout')->name('logoutAslab');
 Route::get('/register-aslab', 'AslabController@register')->name('registerAslab');
 Route::get('/edit-data/{id_pendaftaran}', 'AslabController@editDataPendaftaran')->name('editDataPendaftaran');
 Route::put('/post-update/{id_pendaftaran}', 'AslabController@postUpdate')->name('postUpdate');
+Route::put('/set-soal/{id_test}', 'AslabController@setSoalAsprak')->name('setSoalAsprak');
 Route::post('/store-aslab', 'AslabController@store');
 
 

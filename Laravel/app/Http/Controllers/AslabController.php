@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Aslab;
+use App\Models\Soal;
 use App\Models\Asprak;
 use App\Models\Pendaftaran;
 use App\Models\Test;
@@ -113,6 +114,7 @@ class AslabController extends Controller
                 ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
                 // ->select('users.*', 'contacts.phone', 'orders.price')
                 ->get();
+            $data['soals'] = Soal::all();
             return view('pages.listPendaftar')->with($data);
         } else {
             return redirect()->route('loginAslab')->with('alert', 'Please log in first');
@@ -217,13 +219,21 @@ class AslabController extends Controller
         // $add_pendaftaran->id_pendaftaran = "pendaftaran_" . $add_pendaftaran->id;
         // $add_pendaftaran->save();
 
-        // $add_test = new Test;
-        // $add_test->id_pendaftaran = $add_pendaftaran->id_pendaftaran;
-        // $add_test->id_test = "test_" . $add_test->id_pendaftaran;
-        // $add_test->save();
-        // $add_pendaftaran->id_test = $add_test->id_test;
-        // $add_pendaftaran->save();
+        $edit_test = Test::findOrFail($id);
+        $edit_test->id_soal = $request->get('id_soal');
+        // $edit_test->id_pendaftaran = $request->get('name');
+        // $edit_test->id_test = $request->get('name');
+        $edit_test->save();
+
         return redirect()->route('dashboardAslab')->with('status', 'Data Berhasil diUpdate');
+    }
+
+    public function setSoalAsprak(Request $request, $id)
+    {
+        $soal = Test::findOrFail($id);
+        $soal->id_soal = $request->get('id_soal');
+        $soal->save();
+        return redirect()->route('dashboardAslab')->with('status', 'Soal Berhasil di Set');
     }
 
     // public function dashboard()

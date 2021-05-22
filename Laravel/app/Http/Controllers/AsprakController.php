@@ -148,19 +148,22 @@ class AsprakController extends Controller
         {
 
                 $nim = Session::get('nim');
-                $dataP = DB::table('pendaftarans')
+                $data['dataP'] = DB::table('pendaftarans')
                         ->join('aspraks', 'pendaftarans.nimPendaftar', '=', 'aspraks.nim')->where('nimPendaftar', $nim)->first();
-                // ->select('users.*', 'contacts.phone', 'orders.price')
-                // ->get();
+                $data['dataT'] = DB::table('pendaftarans')
+                        ->join('tests', 'pendaftarans.id_pendaftaran', '=', 'tests.id_pendaftaran')->where('nimPendaftar', $nim) //->get();
+                        ->select('pendaftarans.*', 'tests.*')
+                        ->get();
                 // var_dump($nim);
                 // $dataP = Pendaftaran::where('nimPendaftar', )->first();
                 //var_dump($dataP);
-                if ($dataP) {
-                        Session::put('nimPendaftar', $dataP->nim);
-                        return view('pages.dashboard', ['dataP' => $dataP]);
+                if ($data['dataP']) {
+                        Session::put('nimPendaftar', $data['dataP']->nim);
+                        // return view('pages.dashboard', ['dataP' => $dataP]);
+                        return view('pages.dashboard')->with($data);
                 } else {
-                        $data = Asprak::where('nim', $nim)->first();
-                        return view('pages.dashboard', ['dataP' => $data]);
+                        $data['data'] = Asprak::where('nim', $nim)->first();
+                        return view('pages.dashboard')->with($data);
                 }
         }
 }

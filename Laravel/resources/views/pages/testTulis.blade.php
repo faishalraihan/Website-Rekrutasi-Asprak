@@ -9,16 +9,31 @@
         <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
     </div>
 </div>
-
+{{-- {{dd($data)}} --}}
 <div class="container-fluid px-5 mb-5">
     <div class="row">
         <div class="col-md-9 pl-5 mb-5">
             <table class="mb-5">
                 <tr>
+                    <td style="width:180px;">Nama</td>
+                    <td style="width: 30px;">:</td>
+                    <td>
+                        <b class="text-warning" style="text-transform: uppercase">{{$data['data']->name}}</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:180px;">NIM</td>
+                    <td style="width: 30px;">:</td>
+                    <td>
+                        <b class="text-warning" style="text-transform: uppercase">{{$data['data']->nimPendaftar}}</b>
+                    </td>
+                </tr>
+                <tr>
                     <td style="width:180px;">Mata Kuliah</td>
                     <td style="width: 30px;">:</td>
-                    <td> <b class="text-primary" style="text-transform: uppercase">
-                            {{$soal['matkul']}}</b></td>
+                    <td>
+                        <b class="text-primary" style="text-transform: uppercase">{{$data['data']->matkul}}</b>
+                    </td>
                 </tr>
                 <tr>
                     <td style="width:80px;">Waktu</td>
@@ -35,7 +50,7 @@
                 <div class="mb-3">
                     <label for="soaltest" style="font-weight: bold" class="form-label">Soal Test</label>
                     <div class="mb-4 soaltest py-3 px-3" style="background-color: #f4f4f4;border-radius: 10px">
-                        {{$soal['soal']}}
+                        {{$data['data']->soal}}
                     </div>
 
                     <label for="soaltest" style="font-weight: bold" class="form-label">Jawaban</label>
