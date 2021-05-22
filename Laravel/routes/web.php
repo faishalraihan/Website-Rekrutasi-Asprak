@@ -18,12 +18,15 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::get('dashboardAslab', 'AslabController@index')->name('dashboardAslab');
+Route::get('dashboard-aslab', 'AslabController@index')->name('dashboardAslab');
 Route::get('list-pendaftar', 'AslabController@listPendaftar')->name('listPendaftar');
-Route::get('/listAsprak', 'AslabController@listAsprak')->name('listAsprak');
+Route::get('/list-asprak', 'AslabController@listAsprak')->name('listAsprak');
 Route::get('/login-aslab', 'AslabController@login')->name('loginAslab');
 Route::post('/loginPost-aslab', 'AslabController@loginPost')->name('loginPostAslab');
+Route::get('/logout-aslab', 'AslabController@logout')->name('logoutAslab');
 Route::get('/register-aslab', 'AslabController@register')->name('registerAslab');
+Route::get('/edit-data/{id_pendaftaran}', 'AslabController@editDataPendaftaran')->name('editDataPendaftaran');
+Route::put('/post-update/{id_pendaftaran}', 'AslabController@postUpdate')->name('postUpdate');
 Route::post('/store-aslab', 'AslabController@store');
 
 
@@ -31,9 +34,9 @@ Route::post('/store-aslab', 'AslabController@store');
 Route::get('dashboard', 'AsprakController@dashboard')->name('dashboard');
 Route::get('/logout', 'AsprakController@logout')->name('logout');
 Route::get('/login', 'AsprakController@login')->name('login');
-Route::post('/loginPost', 'AsprakController@loginPost')->name('loginPost');
 Route::get('/register', 'AsprakController@register')->name('register');
 Route::get('test-tulis', 'AsprakController@testTulis');
+Route::post('/loginPost', 'AsprakController@loginPost')->name('loginPost');
 Route::post('/store', 'AsprakController@store');
 Route::get('/editProfile', 'AsprakController@edit');
 Route::get('/editProfile/{nim}/edit', 'AsprakController@edit');

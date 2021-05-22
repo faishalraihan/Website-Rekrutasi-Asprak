@@ -17,7 +17,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="{{route('dashboardAslab')}}">Dashboard</a>
-                    <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                    <a class="dropdown-item" href="{{route('logoutAslab')}}">Logout</a>
                 </div>
             </div>
 

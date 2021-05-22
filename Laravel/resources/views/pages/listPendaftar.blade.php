@@ -25,6 +25,7 @@
             </tr>
         </thead>
         <tbody>
+            {{-- {{dd($test)}} --}}
             @foreach($test as $a)
             <tr>
                 <td>{{ $a->email }}</td>
@@ -43,7 +44,8 @@
 
                 <td>
                     @if ($a->status == NULL)
-                    <a href="{{route('tests.show',$a->id_test)}}">Do Test</a>
+                    {{-- <a href="{{route('tests.show',$a->id_test)}}">Do Test</a> --}}
+                    <a class="badge badge-primary" href="{{route('editDataPendaftaran',$a->id)}}">View & Edit</a>
                     @else
                     <a href="#">See Result</a>
                     @endif

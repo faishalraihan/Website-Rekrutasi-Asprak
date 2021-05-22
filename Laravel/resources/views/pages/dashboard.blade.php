@@ -9,6 +9,8 @@
         <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
     </div>
 </div>
+@if(Session::has('nim'))
+
 @if(Session::has('nimPendaftar'))
 
         <div class="container-fluid px-5 mb-5">
@@ -86,7 +88,7 @@
                             <h6>Kode</h6>
                         </td>
                         <td>
-                            <h6>: MAR</h6>
+                            <h6>: {{$dataP->kode}}</h6>
                         </td>
                     </tr>
                     <tr>
@@ -94,7 +96,7 @@
                             <h6>Periode</h6>
                         </td>
                         <td>
-                            <h6>: 2020/2021 <span class="badge badge-warning">GANJIL</span>
+                            <h6>: {{$dataP->periode}} <span class="badge badge-warning">GANJIL</span>
                             </h6>
                         </td>
                     </tr>
@@ -189,10 +191,7 @@
     </div>
 </div>
 
-
 @else
-
-
 
 <div class="container-fluid px-5 mb-5">
     <div class="row">
@@ -216,7 +215,8 @@
                 <tbody>
                     <tr>
                         <td>
-                            <h2>{{$data->name}}</h2>
+
+                            <h2>{{ $dataP->name }}</h2>
                             <hr>
                         </td>
                     </tr>
@@ -225,7 +225,7 @@
                             <h6>NIM </h6>
                         </td>
                         <td>
-                            <h6>: {{$data->nim}}</h6>
+                            <h6>: {{$dataP->nim}}</h6>
                         </td>
                     </tr>
                     <tr>
@@ -233,7 +233,7 @@
                             <h6>Email </h6>
                         </td>
                         <td>
-                            <h6>: {{$data->email}}</h6>
+                            <h6>: {{$dataP->email}}</h6>
                         </td>
                     </tr>
                     <tr>
@@ -241,7 +241,7 @@
                             <h6>Jurusan</h6>
                         </td>
                         <td>
-                            <h6>: {{$data->jurusan}}</h6>
+                            <h6>: {{$dataP->jurusan}}</h6>
                         </td>
                     </tr>
                     <tr>
@@ -249,7 +249,7 @@
                             <h6>Angkatan</h6>
                         </td>
                         <td>
-                            <h6>: {{$data->angkatan}}</h6>
+                            <h6>: {{$dataP->angkatan}}</h6>
                         </td>
                     </tr>
                     <tr>
@@ -257,10 +257,10 @@
                             <h6>Kode</h6>
                         </td>
                         <td>
-                            @if($data->periode == NULL)
+                            @if($dataP->periode == NULL)
                             <h6 class="badge badge-warning">: ON RECRUITMENT PROGRESS</h6>
                             @else
-                            <h6>: {{$data->kode}}</h6>
+                            <h6>: {{$dataP->kode}}</h6>
                             @endif
                         </td>
                     </tr>
@@ -269,10 +269,10 @@
                             <h6>Periode</h6>
                         </td>
                         <td>
-                            @if($data->periode == NULL)
+                            @if($dataP->periode == NULL)
                             <h6 class="badge badge-warning">: ON RECRUITMENT PROGRESS</h6>
                             @else
-                            <h6>: {{$data->periode}}</h6>
+                            <h6>: {{$dataP->periode}}</h6>
                             @endif
                         </td>
                     </tr>
@@ -282,6 +282,9 @@
         </div>
     </div>
 </div>
+@endif
+
+
 @endif
 
 @endsection
