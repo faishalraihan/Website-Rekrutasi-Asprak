@@ -108,23 +108,16 @@ class AslabController extends Controller
 
     public function listPendaftar()
     {
-<<<<<<< Updated upstream
         if (Session::has('nim')) {
-            $data['test'] = DB::table('pendaftarans')
-                ->join('tests', 'pendaftarans.id_pendaftaran', '=', 'tests.id_pendaftaran')
+            $data['test'] = DB::table('tests')
+                ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
+                // ->select('users.*', 'contacts.phone', 'orders.price')
                 ->get();
             return view('pages.listPendaftar')->with($data);
         } else {
             return redirect()->route('loginAslab')->with('alert', 'Please log in first');
         }
     }
-=======
-        // $data['list_pendaftar'] = Pendaftaran::all();s
-        $data['test'] = DB::table('tests')
-            ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
-            // ->select('users.*', 'contacts.phone', 'orders.price')
-            ->get();
->>>>>>> Stashed changes
 
     public function logout()
     {
