@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Soal;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class SoalController extends Controller
@@ -57,8 +58,13 @@ class SoalController extends Controller
      */
     public function show($id)
     {
-        $soal = Soal::findOrFail($id);
-        return view('pages.testTulis', ['soal' => $soal]);
+        // $data['soal'] = DB::table('soals')
+        //     ->join('tests', 'soals.id_soal', '=', 'tests.id_soal') //->where('nimPendaftar', $nim)->first();
+        //     ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
+        //     ->select('soals.*', 'tests.*', 'pendaftarans.*')
+        //     ->get();
+        // // $soal = Soal::findOrFail($id);
+        // return view('pages.testTulis')->with($data);
     }
 
     /**
