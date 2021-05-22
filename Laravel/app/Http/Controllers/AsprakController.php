@@ -55,7 +55,7 @@ class AsprakController extends Controller
         public function logout()
         {
                 Session::flush();
-                return redirect('login')->with('alert', 'Log out Succes');
+                return redirect('login')->with('alert-success', 'Log out Succes');
         }
 
         /**
@@ -105,8 +105,11 @@ class AsprakController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function edit($id)
+        public function edit($nim)
         {
+                //$nim = Session::get('nim');
+                $asprak = Asprak::where('nim', $nim)->first();
+                return view('auth.editProfile', ['asprak' => $asprak]);
         }
 
         /**
@@ -116,8 +119,20 @@ class AsprakController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, $id)
+        public function update(Request $request, $nim)
         {
+                $asprak = Asprak::where('nim', $nim)->first();
+                if (Session::has('nim') && (Session::get('nim') == $asprak->nim)) {
+                        Asprak::updateProfile($request, $nim);
+                        Session::flush();
+                        Session::put('nim', $request->nim);
+                        Session::put('name', $request->name);
+                        Session::put('email', $request->email);
+                        Session::put('login', TRUE);
+                        return redirect()->action('AsprakController@dashboard');
+                } else {
+                        return redirect('login')->with('alert', 'Please log in or register first');
+                }
         }
         public function testTulis($id_test)
         {
@@ -172,8 +187,11 @@ class AsprakController extends Controller
                 //var_dump($dataP);
                 if ($dataP) {
                         Session::put('nimPendaftar', $dataP->nim);
+                        $nimP = $dataP->nim;
+                        $dataP = Asprak::where('nim', $nimP)->first();
                         return view('pages.dashboard', ['dataP' => $dataP]);
                 } else {
+                        echo ("Pop");
                         $data = Asprak::where('nim', $nim)->first();
                         return view('pages.dashboard', ['dataP' => $data]);
                 }
