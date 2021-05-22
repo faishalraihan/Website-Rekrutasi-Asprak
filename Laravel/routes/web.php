@@ -35,7 +35,9 @@ Route::post('/loginPost', 'AsprakController@loginPost')->name('loginPost');
 Route::get('/register', 'AsprakController@register')->name('register');
 Route::get('test-tulis', 'AsprakController@testTulis');
 Route::post('/store', 'AsprakController@store');
-
+Route::get('/editProfile', 'AsprakController@edit');
+Route::get('/editProfile/{nim}/edit', 'AsprakController@edit');
+Route::post('/editProfile/{nim}/update', 'AsprakController@update');
 Route::get('daftar-asprak', 'PendaftaranController@daftarAsprak')->name('daftar-asprak');
 // Route::post('/daftar', 'PendaftaranController@store');
 

@@ -70,10 +70,13 @@ class PendaftaranController extends Controller
                 $add_test->id_pendaftaran = $add_pendaftaran->id_pendaftaran;
                 $add_test->id_test = "test_" . $add_test->id_pendaftaran;
                 $add_test->save();
+
                 return redirect()->route('asprak.dashboard')->with('status', 'Berhasil Mendaftar, Tunggu Info Selanjutnya Yaa');
                 // $add_test->id_soal = $request->get('id_soal');
                 // $add_test->jawaban = $request->get('jawaban');
                 // $add_test->status = true;
                 // return redirect()->route('asprak.dashboard')->with('success', 'Anda Sudah menyelesaikan Test');
+
         }
+        
 }
