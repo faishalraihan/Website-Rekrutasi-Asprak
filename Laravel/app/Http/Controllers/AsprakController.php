@@ -146,21 +146,6 @@ class AsprakController extends Controller
 
         public function dashboard()
         {
-<<<<<<< Updated upstream
-                // $nim = Session::get('nim');
-                // var_dump($nim);
-                // $dataP = Pendaftaran::where('nimPendaftar', $nim)->first();
-                //var_dump($dataP);
-                // if ($dataP) {
-                //         Session::put('nim', $dataP->nim);
-                //         return view('pages.dashboard', ['dataP' => $dataP]);
-                // } else {
-                $nim = Session::get('nim');
-                // var_dump($nim);
-                $data = Asprak::where('nim', $nim)->first();
-                return view('pages.dashboard', compact('data'));
-                // }
-=======
 
                 $nim = Session::get('nim');
                 $dataP = DB::table('pendaftarans')
@@ -177,6 +162,5 @@ class AsprakController extends Controller
                         $data = Asprak::where('nim', $nim)->first();
                         return view('pages.dashboard', ['dataP' => $data]);
                 }
->>>>>>> Stashed changes
         }
 }

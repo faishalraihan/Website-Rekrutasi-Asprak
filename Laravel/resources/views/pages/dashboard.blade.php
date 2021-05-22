@@ -10,10 +10,7 @@
     </div>
 </div>
 @if(Session::has('nim'))
-<<<<<<< Updated upstream
-=======
 @if ($dataP->nimPendaftar)
->>>>>>> Stashed changes
 <div class="container-fluid px-5 mb-5">
     <div class="row">
         <div class="col-md-3">
@@ -105,7 +102,7 @@
 
                 </tbody>
             </table>
-            <h5 class="mt-5 mb-3">Jadwal Jaga</h5>
+            <h5 class="mt-5 php mb-3">Jadwal Jaga</h5>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -199,12 +196,11 @@
                 <tbody>
                     <tr>
                         <td>
-<<<<<<< Updated upstream
-                            <h2>{{ $data->name }}</h2>
-=======
-                            <h2>{{ $dataP->name }}</h2>
->>>>>>> Stashed changes
-                            <hr>
+                            <<<<<<< Updated upstream <h2>{{ $data->name }}</h2>
+                                =======
+                                <h2>{{ $dataP->name }}</h2>
+                                >>>>>>> Stashed changes
+                                <hr>
                         </td>
                     </tr>
                     <tr>
