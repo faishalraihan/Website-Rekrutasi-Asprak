@@ -16,7 +16,7 @@ class Pendaftaran extends Model
          * @var array
          */
         protected $fillable = [
-          'email', 'name', 'nimPendaftar', 'pilihan_praktikum', 'berkas', 'id_pendaftaran', 'id_test'
+                'email', 'name', 'nimPendaftar', 'pilihan_praktikum', 'berkas', 'id_pendaftaran', 'id_test'
         ];
 
         /**

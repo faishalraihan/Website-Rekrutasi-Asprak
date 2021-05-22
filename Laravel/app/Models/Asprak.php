@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 
@@ -60,24 +59,6 @@ class Asprak extends Authenticatable
                         'kode' => NULL,
                         'periode' => NULL,
                 ]);
-        }
-        public static function updateProfile(Request $request, $nim)
-        {
-                Asprak::where('nim', $nim)
-                        ->update([
-                                'nim' => $request['nim'],
-                                'name' => $request['name'],
-                                'email' => $request['email'],
-                                'jurusan' => $request['jurusan'],
-                                'angkatan' => $request['angkatan'],
-                                'kelas' => $request['kelas'],
-                        ]);
-                Pendaftaran::where('nim', $nim)
-                        ->update([
-                                'nim' => $request['nim'],
-                                'name' => $request['name'],
-                                'email' => $request['email'],
-                        ]);
         }
 
 
