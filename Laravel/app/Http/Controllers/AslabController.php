@@ -108,6 +108,7 @@ class AslabController extends Controller
 
     public function listPendaftar()
     {
+<<<<<<< Updated upstream
         if (Session::has('nim')) {
             $data['test'] = DB::table('pendaftarans')
                 ->join('tests', 'pendaftarans.id_pendaftaran', '=', 'tests.id_pendaftaran')
@@ -117,6 +118,13 @@ class AslabController extends Controller
             return redirect()->route('loginAslab')->with('alert', 'Please log in first');
         }
     }
+=======
+        // $data['list_pendaftar'] = Pendaftaran::all();s
+        $data['test'] = DB::table('tests')
+            ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
+            // ->select('users.*', 'contacts.phone', 'orders.price')
+            ->get();
+>>>>>>> Stashed changes
 
     public function logout()
     {
@@ -178,6 +186,51 @@ class AslabController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function editDataPendaftaran($id)
+    {
+        // $asprak = Pendaftaran::findOrFail($id);
+        $asprak = Pendaftaran::findOrFail($id);
+        // $asprak = DB::table('pendaftarans')
+        //     ->join('aspraks', 'pendaftarans.nimPendaftar', '=', 'aspraks.nim')->where('id_pendaftaran', $nim->id_pendaftaran)->first();
+        return view('pages.editDataPendaftaran', ['asprak' => $asprak]);
+    }
+
+    public function postUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'min:4',
+            'nim' => 'max:10',
+            'pilihan_praktikum' => 'min:3',
+            'berkas' => 'mimes:png,jpg,jpeg,pdf|max:2048',
+        ]);
+
+        $edit_pendaftaran = Pendaftaran::findOrFail($id);
+        $edit_pendaftaran->name = $request->get('name');
+        $edit_pendaftaran->nimPendaftar = $request->get('nim');
+        $edit_pendaftaran->pilihan_praktikum = $request->get('pilihan_praktikum');
+        if ($edit_pendaftaran->berkas == null) {
+            $edit_pendaftaran->berkas = $edit_pendaftaran->berkas;
+        } else {
+            $edit_pendaftaran->berkas = $request->file('berkas')->store(
+                'assets/product',
+                'public'
+            );
+        }
+
+        // $add_pendaftaran->id_test = NULL;
+        $edit_pendaftaran->save();
+        // $add_pendaftaran->id_pendaftaran = "pendaftaran_" . $add_pendaftaran->id;
+        // $add_pendaftaran->save();
+
+        // $add_test = new Test;
+        // $add_test->id_pendaftaran = $add_pendaftaran->id_pendaftaran;
+        // $add_test->id_test = "test_" . $add_test->id_pendaftaran;
+        // $add_test->save();
+        // $add_pendaftaran->id_test = $add_test->id_test;
+        // $add_pendaftaran->save();
+        return redirect()->route('dashboardAslab')->with('status', 'Data Berhasil diUpdate');
     }
 
     // public function dashboard()

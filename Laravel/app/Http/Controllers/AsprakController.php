@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Asprak;
 use App\Models\Aslab;
 use App\Models\Pendaftaran;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -145,6 +146,7 @@ class AsprakController extends Controller
 
         public function dashboard()
         {
+<<<<<<< Updated upstream
                 // $nim = Session::get('nim');
                 // var_dump($nim);
                 // $dataP = Pendaftaran::where('nimPendaftar', $nim)->first();
@@ -158,5 +160,23 @@ class AsprakController extends Controller
                 $data = Asprak::where('nim', $nim)->first();
                 return view('pages.dashboard', compact('data'));
                 // }
+=======
+
+                $nim = Session::get('nim');
+                $dataP = DB::table('pendaftarans')
+                        ->join('aspraks', 'pendaftarans.nimPendaftar', '=', 'aspraks.nim')->where('nimPendaftar', $nim)->first();
+                // ->select('users.*', 'contacts.phone', 'orders.price')
+                // ->get();
+                // var_dump($nim);
+                // $dataP = Pendaftaran::where('nimPendaftar', )->first();
+                //var_dump($dataP);
+                if ($dataP) {
+                        Session::put('nimPendaftar', $dataP->nim);
+                        return view('pages.dashboard', ['dataP' => $dataP]);
+                } else {
+                        $data = Asprak::where('nim', $nim)->first();
+                        return view('pages.dashboard', ['dataP' => $data]);
+                }
+>>>>>>> Stashed changes
         }
 }
