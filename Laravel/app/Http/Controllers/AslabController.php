@@ -121,6 +121,20 @@ class AslabController extends Controller
         }
     }
 
+    public function viewHasilAkhir()
+    {
+        if (Session::has('nim')) {
+            $data['test'] = DB::table('tests')
+                ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
+                ->join('hasils', 'tests.id_test', '=', 'hasils.id_test')
+                // ->select('users.*', 'contacts.phone', 'orders.price')
+                ->get();
+            return view('pages.viewResult')->with($data);
+        } else {
+            return redirect()->route('loginAslab')->with('alert', 'Please log in first');
+        }
+    }
+
     public function logout()
     {
         Session::flush();
@@ -225,7 +239,7 @@ class AslabController extends Controller
         // $edit_test->id_test = $request->get('name');
         $edit_test->save();
 
-        return redirect()->route('dashboardAslab')->with('status', 'Data Berhasil diUpdate');
+        return redirect()->route('listPendaftar')->with('status', 'Data Berhasil diUpdate');
     }
 
     public function setSoalAsprak(Request $request, $id)
@@ -233,7 +247,18 @@ class AslabController extends Controller
         $soal = Test::findOrFail($id);
         $soal->id_soal = $request->get('id_soal');
         $soal->save();
-        return redirect()->route('dashboardAslab')->with('status', 'Soal Berhasil di Set');
+        return redirect()->route('listPendaftar')->with('status', 'Soal Berhasil di Set');
+    }
+
+    public function viewJawabanAsprak($id_test)
+    {
+        $jawabanTest = DB::table('tests')
+            ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
+            ->join('soals', 'tests.id_soal', '=', 'soals.id_soal')
+            ->where('tests.id_test', '=', $id_test)
+            // ->select('users.*', 'contacts.phone', 'orders.price')
+            ->first();
+        return view('pages.viewJawaban')->with('jawabanTest', $jawabanTest);
     }
 
     // public function dashboard()

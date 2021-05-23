@@ -63,8 +63,8 @@ class SoalController extends Controller
         //     ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
         //     ->select('soals.*', 'tests.*', 'pendaftarans.*')
         //     ->get();
-        // // $soal = Soal::findOrFail($id);
-        // return view('pages.testTulis')->with($data);
+        $soal = Soal::findOrFail($id);
+        return view('pages.lihatSoal')->with('soal', $soal);
     }
 
     /**

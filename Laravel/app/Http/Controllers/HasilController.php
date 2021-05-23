@@ -35,7 +35,14 @@ class HasilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nilai = new Hasil;
+        $nilai->id_test = $request->get('id_test');
+        $nilai->id_pendaftaran = $request->get('id_pendaftaran');
+        $nilai->nilai = $request->get('nilai');
+        $nilai->save();
+        $nilai->id_hasil = "hasil_" . $nilai->id . "_" . $nilai->id_test;
+        $nilai->save();
+        return redirect()->route('listPendaftar')->with('status', 'Nilai Berhasil dimasukkan');
     }
 
     /**

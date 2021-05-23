@@ -9,6 +9,7 @@
         <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
     </div>
 </div>
+
 @if(Session::has('nim'))
 @if ($dataP->nimPendaftar)
 <div class="container-fluid px-5 mb-5">

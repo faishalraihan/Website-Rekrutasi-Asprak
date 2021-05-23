@@ -102,8 +102,14 @@ class TestController extends Controller
      * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Test $test)
+    public function update(Request $request, $id_test)
     {
+        $jawaban = $request->get('jawaban');
+        Test::where('id_test', $id_test)->update(['jawaban' => $jawaban, 'status' => true]);
+        // $test->jawaban = $request->input('jawaban');
+        // $test->status = true;
+        // $test->save();
+        return redirect()->route('dashboard')->with('status', 'Test berhasil dilakasnakan, Tunggu pengumumanya yaaa!');
     }
 
     /**

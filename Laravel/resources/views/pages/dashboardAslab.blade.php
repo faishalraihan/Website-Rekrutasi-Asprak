@@ -99,7 +99,8 @@
             </div>
             <div class="row pt-4">
                 <div class="col-md-5">
-                    <a href="#" class="btn btn-outline-info" style="border-radius: 0.7; width: 100px">Hasil</a>
+                    <a href="{{route('viewResult')}}" class="btn btn-outline-info"
+                        style="border-radius: 0.7; width: 100px">Hasil</a>
                 </div>
                 <div class="col-md-5">
                     <a href="{{route('listAsprak')}}" class="btn btn-outline-info float-right"
