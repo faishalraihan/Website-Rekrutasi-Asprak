@@ -119,6 +119,7 @@
                                     </tr>
                                 <tbody>
                                     {{-- <td>{{dd($dataT)}}</td> --}}
+                                    <?php $index = 0; ?>
                                     @foreach ($dataT as $datatest)
                                     <tr>
                                         <td style="text-transform: uppercase;font-weight: bold">
@@ -131,15 +132,32 @@
                                             @endif
                                         </td>
                                         <td>
+                                            {{-- {{dd($dataT)}} --}}
                                             @if ($datatest->status == NULL)
                                             <a href="{{route('tests.show',$datatest->id_test)}}"
                                                 class="btn btn-outline-success">Kerjakan Test</a>
                                             @else
-                                            <a>Menunggu Hasil</a>
+                                            {{-- @foreach ($dataH as $hasil) --}}
+                                            @if ($dataH)
+                                            @if ($dataH[$index]->nilai > 75)
+                                            <p style="font-weight: bold" class="text-success">{{$dataH[$index]->nilai}}
+                                                |
+                                                <span class="badge badge-success">LULUS</span>
+                                            </p>
+                                            @else
+                                            <p style="font-weight: bold" class="text-danger">{{$dataH[$index]->nilai}} |
+                                                <span class="badge badge-danger">TIDAK
+                                                    LULUS</span></p>
+                                            @endif
+                                            @else
+                                            <p>Menunggu Hasil</p>
+                                            @endif
+                                            {{-- @endforeach --}}
                                             @endif
 
                                         </td>
                                     </tr>
+                                    <?php $index++; ?>
                                     @endforeach
 
                                 </tbody>
