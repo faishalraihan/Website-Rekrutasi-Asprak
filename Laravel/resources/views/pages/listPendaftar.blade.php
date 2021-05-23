@@ -38,6 +38,7 @@
                     @if ($a->status == NULL)
                     <span class="btn btn-warning">Belum Test</span>
                     @else
+                    {{-- {{dd($hasil)}} --}}
                     <span class="btn btn-success">Sudah Test</span>
                     @endif
 

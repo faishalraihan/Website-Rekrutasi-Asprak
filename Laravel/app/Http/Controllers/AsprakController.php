@@ -163,6 +163,10 @@ class AsprakController extends Controller
                         ->join('tests', 'pendaftarans.id_pendaftaran', '=', 'tests.id_pendaftaran')->where('nimPendaftar', $nim) //->get();
                         ->select('pendaftarans.*', 'tests.*')
                         ->get();
+                $data['dataH'] = DB::table('hasils')
+                        ->join('pendaftarans', 'hasils.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')->where('pendaftarans.nimPendaftar', $nim) //->get();
+                        ->select('hasils.*', 'pendaftarans.*')
+                        ->get();
                 // var_dump($nim);
                 // $dataP = Pendaftaran::where('nimPendaftar', )->first();
                 //var_dump($dataP);
