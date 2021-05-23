@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Asprak;
 use App\Models\Aslab;
 use App\Models\Pendaftaran;
+use App\Models\Test;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -131,6 +132,14 @@ class AsprakController extends Controller
                         $data['id_test'] = Pendaftaran::where('id_test', $id_test)->first();
                         return view('pages.testTulis', compact('data'));
                 }
+        }
+        public function submitJawabanTest(Request $request, $id_test)
+        {
+                $test = Test::findOrFail($id_test);
+                $test->jawaban = $request->get('jawaban');
+                $test->status = true;
+                $test->save();
+                return redirect()->route('dashboard')->with('status', 'Test berhasil dilakasnakan, Tunggu pengumumanya yaaa!');
         }
 
         public function daftarAsprak()

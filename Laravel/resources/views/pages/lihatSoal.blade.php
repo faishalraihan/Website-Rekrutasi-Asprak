@@ -5,7 +5,7 @@
 @section('content')
 <div class="jumbotron jumbotron-fluid">
     <div class="container text-center">
-        <h1 class="display-4">Tes Tulis Rekrutasi Asprak</h1>
+        <h1 class="display-4">Soal Tes Tulis Rekrutasi Asprak</h1>
         <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
     </div>
 </div>
@@ -15,24 +15,17 @@
         <div class="col-md-9 pl-5 mb-5">
             <table class="mb-5">
                 <tr>
-                    <td style="width:180px;">Nama</td>
+                    <td style="width:180px;">Pembuat Soal</td>
                     <td style="width: 30px;">:</td>
                     <td>
-                        <b class="text-warning" style="text-transform: uppercase">{{$data['data']->name}}</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:180px;">NIM</td>
-                    <td style="width: 30px;">:</td>
-                    <td>
-                        <b class="text-warning" style="text-transform: uppercase">{{$data['data']->nimPendaftar}}</b>
+                        <b class="text-success" style="text-transform: uppercase">{{$soal->nimPembuat}}</b>
                     </td>
                 </tr>
                 <tr>
                     <td style="width:180px;">Mata Kuliah</td>
                     <td style="width: 30px;">:</td>
                     <td>
-                        <b class="text-primary" style="text-transform: uppercase">{{$data['data']->matkul}}</b>
+                        <b class="text-primary" style="text-transform: uppercase">{{$soal->matkul}}</b>
                     </td>
                 </tr>
                 <tr>
@@ -46,24 +39,19 @@
                     <td> <b>Isian</b></td>
                 </tr>
             </table>
-            <form method="POST" action="{{route('tests.update',$data['data']->id_test)}}">
-                @csrf
-                <input type="hidden" name="_method" value="PUT">
+            <form>
                 <div class="mb-3">
                     <label for="soaltest" style="font-weight: bold" class="form-label">Soal Test</label>
                     <div class="mb-4 soaltest py-3 px-3" style="background-color: #f4f4f4;border-radius: 10px">
-                        {{$data['data']->soal}}
+                        {{$soal->soal}}
                     </div>
 
                     <label for="jawaban" style="font-weight: bold" class="form-label">Jawaban</label>
-                    <div class="form-floating mb-5">
-                        <textarea class="form-control" rows="10"
-                            placeholder="Jawablah soal dengan jawaban yang benar..." id="jawaban"
-                            name="jawaban">{{old('jawaban')}}</textarea>
+                    <div class="mb-4 soaltest py-3 px-3" style="background-color: #f4f4f4;border-radius: 10px">
+                        {{$soal->kunciJawaban}}
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary float-right">Submit</button>
             </form>
         </div>
     </div>

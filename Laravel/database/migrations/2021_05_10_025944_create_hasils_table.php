@@ -15,7 +15,7 @@ class CreateHasilsTable extends Migration
     {
         Schema::create('hasils', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_hasil');
+            $table->string('id_hasil')->nullable();
             $table->string('id_test');
             $table->string('id_pendaftaran');
             $table->integer('nilai');

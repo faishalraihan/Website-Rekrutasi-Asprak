@@ -19,7 +19,9 @@ Route::get('/', function () {
 
 
 Route::get('dashboard-aslab', 'AslabController@index')->name('dashboardAslab');
+Route::get('view-result', 'AslabController@viewHasilAkhir')->name('viewResult');
 Route::get('list-pendaftar', 'AslabController@listPendaftar')->name('listPendaftar');
+Route::get('view-jawaban/{id_test}', 'AslabController@viewJawabanAsprak')->name('viewJawabanAsprak');
 Route::get('/list-asprak', 'AslabController@listAsprak')->name('listAsprak');
 Route::get('/login-aslab', 'AslabController@login')->name('loginAslab');
 Route::post('/loginPost-aslab', 'AslabController@loginPost')->name('loginPostAslab');
@@ -37,6 +39,7 @@ Route::get('/logout', 'AsprakController@logout')->name('logout');
 Route::get('/login', 'AsprakController@login')->name('login');
 Route::get('/register', 'AsprakController@register')->name('register');
 Route::get('test-tulis', 'AsprakController@testTulis');
+Route::put('submit-jawaban/{id_test}', 'AsprakController@submitJawabanTest')->name('submitJawabanTest');
 Route::post('/loginPost', 'AsprakController@loginPost')->name('loginPost');
 Route::post('/store', 'AsprakController@store');
 
@@ -51,3 +54,4 @@ Route::resource('asprak', 'AsprakController');
 Route::resource('aslab', 'AslabController');
 Route::resource('pendaftarans', 'PendaftaranController');
 Route::resource('tests', 'TestController');
+Route::resource('hasils', 'HasilController');
