@@ -3,14 +3,17 @@
 @section('title','Web Rekrutasi Asprak')
 
 @section('content')
-<div class="jumbotron jumbotron-fluid" style="background: url('img/jumbo-bg2.jpg'); background-size: cover">
+<header>
     <div class="container text-center">
-        <h1 class="mb-3" style="color:whitesmoke">Rekruitasi Asprak</h1>
-        <p class="lead" style="color:whitesmoke">Selamat datang di Website Rekruitasi Asisten Praktikum IF LAB</p>
-        <a href="{{route('daftar-asprak')}}" class="btn btn-warning" style="font-size: 20px;width: 50%">Daftar
+        <h1 class="mb-3">Rekruitasi Asprak</h1>
+        <p class="lead">Selamat datang di Website Rekruitasi Asisten Praktikum IF LAB</p>
+        <a href="{{route('daftar-asprak')}}" class="btn btn-info" style="font-size: 20px;width: 50%">Daftar
             Asprak</a>
     </div>
-</div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" style="bottom: 0;">
+        <polygon fill="white" points="0,100 100,0 100,100"/>
+    </svg>
+</header>
 
 <div class="container">
     <div class="row text-center">
@@ -83,9 +86,12 @@
         </div>
     </div> -->
 
-<div class="jumbotron jumbotron-fluid mt-5">
-    <div class="container text-center">
-        <h1 class="mb-3">Mata Kuliah</h1>
+<div class="home" style="height: 500px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" style="top: 0;">
+        <polygon fill="white" points="0,100 100,0 100,100" transform="scale(1, -1) translate(0, -100)"/>
+    </svg>
+    <div class="container text-center" style="padding: 50px 0 0 0; color: white;">
+        <h1 class="pt-5">Mata Kuliah</h1>
         <p class="lead">Daftar Praktikum di Laboratorium IF</p>
     </div>
     <div class="d-flex justify-content-center">
@@ -116,6 +122,9 @@
             </div>
         </div>
     </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" style="bottom: 0;">
+        <polygon fill="white" points="0,100 100,0 100,100"/>
+    </svg>
 </div>
 
 <div class="container mx-auto">
