@@ -3,14 +3,18 @@
 </script>
 <div class="footer-dark">
     <footer>
+        <svg viewBox="0 -20 700 110" width="100%" preserveAspectRatio="none">
+            <path transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700" fill="#94bdff" />
+            <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#002663" />
+        </svg>
         <div class="container">
             <div class="d-flex justify-content-center text-center">
                 <div class="col-md-6 item text">
-                    <h3>Website Rekruitasi Asprak IF Lab</h3>
-                    <p>Pendaftaran, Ujian dan Seleksi Calon Asisten Praktikum IF Lab dilaksanakan pada Website ini.</p>
+                    <!-- <h3>Website Rekruitasi Asprak IF Lab</h3>
+                    <p>Pendaftaran, Ujian dan Seleksi Calon Asisten Praktikum IF Lab dilaksanakan pada Website ini.</p> -->
+                    <p class="copyright">Website Rekruitasi Asprak © 2021</p>
                 </div>
             </div>
-            <p class="copyright">Website Rekruitasi Asprak © 2021</p>
         </div>
     </footer>
 </div>
