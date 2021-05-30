@@ -41,7 +41,7 @@ class AsprakController extends Controller
                 $data = Asprak::where('email', $email)->first();
                 // var_dump($data);
                 //apakah email tersebut ada atau tidak
-                if (Hash::check($password, $data->password)) {
+                if ($data && Hash::check($password, $data->password)) {
                         // Session::put('id', $data->id);
                         Session::put('nim', $data->nim);
                         Session::put('name', $data->name);
@@ -49,7 +49,7 @@ class AsprakController extends Controller
                         Session::put('login', TRUE);
                         return redirect('asprak');
                 } else {
-                        return redirect('login')->with('alert', 'Invalid email or passwordd!');
+                        return redirect('login')->with('alert', 'Invalid email or password!');
                 }
         }
 
