@@ -10,8 +10,8 @@
     </div>
 </div>
 
-@if(Session::has('nim'))
-@if ($dataP->nimPendaftar)
+
+@if(Session::has('nim') && !$dataP)
 <div class="container-fluid px-5 mb-5">
     <div class="row">
         <div class="col-md-3">
@@ -24,7 +24,99 @@
                         ASISTEN PRAKTIKUM</p>
                 </div>
                 <div class="mt-3">
-                    <a href="#" class="btn btn-info"
+                    <a href="{{url('/editProfile/'.$data->nim.'/edit')}}" class="btn btn-info"
+                        style="border-radius: 0;width: 100%;background-color: #425292 ;">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 pl-5">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <h2>{{ $data->name }}</h2>
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20px;">
+                            <h6>NIM </h6>
+                        </td>
+                        <td>
+                            <h6>: {{$data->nim}}</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20px;">
+                            <h6>Email </h6>
+                        </td>
+                        <td>
+                            <h6>: {{$data->email}}</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20px;">
+                            <h6>Jurusan</h6>
+                        </td>
+                        <td>
+                            <h6>: {{$data->jurusan}}</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20px;">
+                            <h6>Angkatan</h6>
+                        </td>
+                        <td>
+                            <h6>: {{$data->angkatan}}</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20px;">
+                            <h6>Kode</h6>
+                        </td>
+                        <td>
+                            @if($data->periode == NULL)
+                            <h6 class="badge badge-warning">: ON RECRUITMENT PROGRESS</h6>
+                            @else
+                            <h6>: {{$data->kode}}</h6>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20px;">
+                            <h6>Periode</h6>
+                        </td>
+                        <td>
+                            @if($data->periode == NULL)
+                            <h6 class="badge badge-warning">: ON RECRUITMENT PROGRESS</h6>
+                            @else
+                            <h6>: {{$data->periode}}</h6>
+                            @endif
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@elseif ($dataP->nimPendaftar)
+<div class="container-fluid px-5 mb-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card" style="border: none;">
+                <img src="https://www.kaplanhecker.com/sites/default/files/styles/biography_profile/public/Sean_Hecker.jpg?itok=v3wH6WLn"
+                    class="card-img-top" style="width: 100%;">
+                <div class="card-body pl-0 pr-0 py-0">
+                    <p class="card-text text-center py-2"
+                        style="font-weight: bold;color: #425292;background-color: #FFE600;">
+                        ASISTEN PRAKTIKUM</p>
+                </div>
+                <div class="mt-3">
+                    <a href="{{url('/editProfile/'.$dataP->nimPendaftar.'/edit')}}" class="btn btn-info"
                         style="border-radius: 0;width: 100%;background-color: #425292 ;">Edit Profile</a>
                 </div>
                 <div class="mt-3">
@@ -239,100 +331,9 @@
     </div>
 </div>
 
-@else
-
-<div class="container-fluid px-5 mb-5">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card" style="border: none;">
-                <img src="https://www.kaplanhecker.com/sites/default/files/styles/biography_profile/public/Sean_Hecker.jpg?itok=v3wH6WLn"
-                    class="card-img-top" style="width: 100%;">
-                <div class="card-body pl-0 pr-0 py-0">
-                    <p class="card-text text-center py-2"
-                        style="font-weight: bold;color: #425292;background-color: #FFE600;">
-                        ASISTEN PRAKTIKUM</p>
-                </div>
-                <div class="mt-3">
-                    <a href="#" class="btn btn-info"
-                        style="border-radius: 0;width: 100%;background-color: #425292 ;">Edit Profile</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 pl-5">
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-
-                            <h2>{{ $dataP->name }}</h2>
-                            <hr>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 20px;">
-                            <h6>NIM </h6>
-                        </td>
-                        <td>
-                            <h6>: {{$dataP->nim}}</h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 20px;">
-                            <h6>Email </h6>
-                        </td>
-                        <td>
-                            <h6>: {{$dataP->email}}</h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 20px;">
-                            <h6>Jurusan</h6>
-                        </td>
-                        <td>
-                            <h6>: {{$dataP->jurusan}}</h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 20px;">
-                            <h6>Angkatan</h6>
-                        </td>
-                        <td>
-                            <h6>: {{$dataP->angkatan}}</h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 20px;">
-                            <h6>Kode</h6>
-                        </td>
-                        <td>
-                            @if($dataP->periode == NULL)
-                            <h6 class="badge badge-warning">: ON RECRUITMENT PROGRESS</h6>
-                            @else
-                            <h6>: {{$dataP->kode}}</h6>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 20px;">
-                            <h6>Periode</h6>
-                        </td>
-                        <td>
-                            @if($dataP->periode == NULL)
-                            <h6 class="badge badge-warning">: ON RECRUITMENT PROGRESS</h6>
-                            @else
-                            <h6>: {{$dataP->periode}}</h6>
-                            @endif
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
 @endif
 
 
-@endif
+
 
 @endsection

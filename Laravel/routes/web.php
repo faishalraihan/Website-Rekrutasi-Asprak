@@ -42,6 +42,8 @@ Route::get('test-tulis', 'AsprakController@testTulis');
 Route::put('submit-jawaban/{id_test}', 'AsprakController@submitJawabanTest')->name('submitJawabanTest');
 Route::post('/loginPost', 'AsprakController@loginPost')->name('loginPost');
 Route::post('/store', 'AsprakController@store');
+Route::get('/editProfile/{nim}/edit', 'AsprakController@edit');
+Route::post('/editProfile/{nim}/update', 'AsprakController@update');
 
 Route::get('daftar-asprak', 'PendaftaranController@daftarAsprak')->name('daftar-asprak');
 // Route::post('/daftar', 'PendaftaranController@store');

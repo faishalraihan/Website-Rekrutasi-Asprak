@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class Asprak extends Authenticatable
 {
@@ -60,7 +61,29 @@ class Asprak extends Authenticatable
                         'periode' => NULL,
                 ]);
         }
+        public static function updateProfile(Request $request, $nim)
+        {
+                DB::table('aspraks')
+                        ->where('nim', $nim)
+                        ->update([
+                                'nim' => $request->nim,
+                                'name' => $request->name,
+                                'email' => $request->email,
+                                'jurusan' => $request->jurusan,
+                                'angkatan' => $request->angkatan,
+                                'kelas' => $request->kelas,
 
+                        ]);
+                DB::table('pendaftarans')
+                        ->where('nimPendaftar', $nim)
+                        ->update([
+                                'nimPendaftar' => $request->nim,
+                                'name' => $request->name,
+                                'email' => $request->email,
+
+
+                        ]);
+        }
 
         // /** RELATIONSIHPS */
         // public function pendaftaran()

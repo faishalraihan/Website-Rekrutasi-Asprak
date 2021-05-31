@@ -18,7 +18,7 @@ class CreatePendaftaransTable extends Migration
             $table->string('id_pendaftaran')->nullable();
             $table->string('email');
             $table->string('name');
-            $table->string('nim');
+            $table->string('nimPendaftar');
             $table->string('pilihan_praktikum');
             $table->string('berkas');
             $table->string('id_test')->nullable();

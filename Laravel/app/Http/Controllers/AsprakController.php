@@ -106,8 +106,14 @@ class AsprakController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function edit($id)
+        public function edit($nim)
         {
+                if (Session::has('nim')) {
+                        $data = Asprak::where('nim', $nim)->first();
+                        return view('pages.editProfile', ['data' => $data]);
+                } else {
+                        return redirect('login')->with('alert', 'Login First');
+                }
         }
 
         /**
@@ -117,8 +123,17 @@ class AsprakController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, $id)
+        public function update(Request $request, $nim)
         {
+                Asprak::updateProfile($request, $nim);
+                $request->session()->forget(['name', 'nim', 'nimPendaftar', 'email']);
+                Session::put('nim', $request->nim);
+                Session::put('name', $request->name);
+                Session::put('email', $request->email);
+                Session::put('nimPendaftar', $request->nim);
+                return redirect()->action(
+                        'AsprakController@dashboard'
+                );
         }
         public function testTulis($id_test)
         {
