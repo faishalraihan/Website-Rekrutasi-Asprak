@@ -80,7 +80,14 @@ class TestController extends Controller
                 ->where('pendaftarans.id_test', '=', $id_test)
                 ->first();
             // $dataTest['id_test'] = Pendaftaran::where('id_test', $id_test)->first();
-            return view('pages.testTulis')->with('data', $dataTest);
+            // var_dump($dataTest);
+            if ($dataTest['data']) {
+                return view('pages.testTulis')->with('data', $dataTest);
+            } else {
+                return redirect()->action(
+                    'AsprakController@dashboard'
+                )->with('alert', 'Soal Belum ada');
+            }
         }
     }
 

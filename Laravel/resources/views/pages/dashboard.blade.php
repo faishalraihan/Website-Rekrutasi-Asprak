@@ -228,24 +228,30 @@
                                             @if ($datatest->status == NULL)
                                             <a href="{{route('tests.show',$datatest->id_test)}}"
                                                 class="btn btn-outline-success">Kerjakan Test</a>
-                                            @else
+                                            
                                             {{-- @foreach ($dataH as $hasil) --}}
-                                            @if ($dataH)
-                                            @if ($dataH[$index]->nilai > 75)
-                                            <p style="font-weight: bold" class="text-success">{{$dataH[$index]->nilai}}
-                                                |
-                                                <span class="badge badge-success">LULUS</span>
-                                            </p>
+                                            @elseif ($dataH != "[]")
+                                                @foreach ($dataH as $hasil)
+                                                @if ($hasil->pilihan_praktikum == $datatest->pilihan_praktikum)                        
+                                                        @if ($hasil->nilai > 75)
+                                                        <p style="font-weight: bold" class="text-success">{{$hasil->nilai}}
+                                                            |
+                                                            <span class="badge badge-success">LULUS</span>
+                                                        </p>
+                                                        @else
+                                                        <p style="font-weight: bold" class="text-danger">{{$hasil->nilai}} |
+                                                            <span class="badge badge-danger">TIDAK
+                                                                LULUS</span></p>
+                                                        @endif
+                                                @else 
+                                                    {{-- <p>Menunggu Hasil</p> --}}
+                                                @endif
+                                                @endforeach
                                             @else
-                                            <p style="font-weight: bold" class="text-danger">{{$dataH[$index]->nilai}} |
-                                                <span class="badge badge-danger">TIDAK
-                                                    LULUS</span></p>
-                                            @endif
-                                            @else
-                                            <p>Menunggu Hasil</p>
+                                                <p>Menunggu Hasil</p>
                                             @endif
                                             {{-- @endforeach --}}
-                                            @endif
+                                            
 
                                         </td>
                                     </tr>

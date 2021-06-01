@@ -19,6 +19,7 @@
                 <th>Nama</th>
                 <th>E-Mail</th>
                 <th>Tanggal Register</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
                 <td>{{ $a->name }}</td>
                 <td>{{ $a->email }}</td>
                 <td>{{ $a->created_at }}</td>
+                
             </tr>
             @endforeach
         </tbody>

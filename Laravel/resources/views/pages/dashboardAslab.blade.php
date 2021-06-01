@@ -22,7 +22,7 @@
                         ASISTEN LABORATORIUM</p>
                 </div>
                 <div class="mt-3">
-                    <a href="#" class="btn btn-info"
+                    <a href="{{url('/editProfileAslab/'.$data->nim.'/edit')}}" class="btn btn-info"
                         style="border-radius: 0;width: 100%;background-color: #425292 ;">Edit Profile</a>
                 </div>
                 <!-- <div class="mt-3">

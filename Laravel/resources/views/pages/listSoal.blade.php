@@ -34,7 +34,15 @@
                 </div>
                 <div class="card-body">
                     <h6 class="card-title">Pembuat Soal : {{$soal['nimPembuat']}}</h6>
-                    <a href="{{route('soals.show',[$soal->id])}}" class="btn btn-primary">Lihat Soal</a>
+                    <div class="row">
+                        <a href="{{route('soals.show',[$soal->id])}}" class="btn btn-primary">Lihat Soal</a>
+                        <form method="POST" action="{{route('soals.destroy',$soal->id)}}">
+                            @csrf
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger ml-2"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
         </div>

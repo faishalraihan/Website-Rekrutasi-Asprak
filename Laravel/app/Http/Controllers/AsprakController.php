@@ -56,7 +56,7 @@ class AsprakController extends Controller
         public function logout()
         {
                 Session::flush();
-                return redirect('login')->with('alert', 'Log out Succes');
+                return redirect('login')->with('alert-success', 'Log out Succes');
         }
 
         /**
@@ -185,6 +185,7 @@ class AsprakController extends Controller
                 // var_dump($nim);
                 // $dataP = Pendaftaran::where('nimPendaftar', )->first();
                 //var_dump($dataP);
+                //var_dump($data['dataH']);
                 if ($data['dataP']) {
                         Session::put('nimPendaftar', $data['dataP']->nim);
                         // return view('pages.dashboard', ['dataP' => $dataP]);

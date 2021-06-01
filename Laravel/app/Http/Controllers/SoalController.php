@@ -96,8 +96,10 @@ class SoalController extends Controller
      * @param  \App\Models\Soal  $soal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Soal $soal)
+    public function destroy($id)
     {
-        //
+        $soal = Soal::findOrFail($id);
+        $soal->delete();
+        return redirect()->route('soals.index');
     }
 }

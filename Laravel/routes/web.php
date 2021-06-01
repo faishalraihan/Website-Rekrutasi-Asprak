@@ -31,6 +31,8 @@ Route::get('/edit-data/{id_pendaftaran}', 'AslabController@editDataPendaftaran')
 Route::put('/post-update/{id_pendaftaran}', 'AslabController@postUpdate')->name('postUpdate');
 Route::put('/set-soal/{id_test}', 'AslabController@setSoalAsprak')->name('setSoalAsprak');
 Route::post('/store-aslab', 'AslabController@store');
+Route::get('/editProfileAslab/{nim}/edit', 'AslabController@edit');
+Route::post('/editProfileAslab/{nim}/update', 'AslabController@update');
 
 
 

@@ -169,9 +169,15 @@ class AslabController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($nim)
     {
         //
+        if (Session::has('nim')) {
+            $data = Aslab::where('nim', $nim)->first();
+            return view('pages.editProfileAslab', ['data' => $data]);
+        } else {
+            return redirect('login')->with('alert', 'Login First');
+        }
     }
 
     /**
@@ -181,9 +187,15 @@ class AslabController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $nim)
     {
-        //
+        Aslab::updateProfile($request, $nim);
+        $request->session()->forget(['name', 'nim', 'nimPendaftar', 'email']);
+        Session::put('nim', $request->nim);
+        Session::put('name', $request->name);
+        Session::put('email', $request->email);
+        Session::put('nimPendaftar', $request->nim);
+        return redirect('aslab');
     }
 
     /**
@@ -194,7 +206,9 @@ class AslabController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pendaftar = Pendaftaran::findOrFail($id);
+        $pendaftar->delete();
+        return redirect()->route('listPendaftar');
     }
 
     public function editDataPendaftaran($id)
@@ -219,14 +233,17 @@ class AslabController extends Controller
         $edit_pendaftaran->name = $request->get('name');
         $edit_pendaftaran->nimPendaftar = $request->get('nim');
         $edit_pendaftaran->pilihan_praktikum = $request->get('pilihan_praktikum');
-        if ($edit_pendaftaran->berkas == null) {
-            $edit_pendaftaran->berkas = $edit_pendaftaran->berkas;
-        } else {
-            $edit_pendaftaran->berkas = $request->file('berkas')->store(
-                'assets/product',
-                'public'
-            );
-        }
+        // var_dump($edit_pendaftaran->berkas);
+        // var_dump($request->get('berkas'));
+        // if ($request->get('berkas') == null) {
+        //     $edit_pendaftaran->berkas =  $edit_pendaftaran->berkas;
+        // } else {
+        //     $edit_pendaftaran->berkas = $request->get('berkas')->store(
+        //         'assets/product',
+        //         'public'
+        //     );
+
+        // }
 
         // $add_pendaftaran->id_test = NULL;
         $edit_pendaftaran->save();
