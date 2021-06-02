@@ -100,6 +100,6 @@ class SoalController extends Controller
     {
         $soal = Soal::findOrFail($id);
         $soal->delete();
-        return redirect()->route('soals.index');
+        return redirect()->route('soals.index')->with('success','Soal Berhasil dihapus');
     }
 }

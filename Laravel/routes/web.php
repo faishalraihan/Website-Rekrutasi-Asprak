@@ -28,8 +28,10 @@ Route::post('/loginPost-aslab', 'AslabController@loginPost')->name('loginPostAsl
 Route::get('/logout-aslab', 'AslabController@logout')->name('logoutAslab');
 Route::get('/register-aslab', 'AslabController@register')->name('registerAslab');
 Route::get('/edit-data/{id_pendaftaran}', 'AslabController@editDataPendaftaran')->name('editDataPendaftaran');
+Route::get('/delete-data/{id}', 'AslabController@destroy')->name('deleteDataPendaftaran');
 Route::put('/post-update/{id_pendaftaran}', 'AslabController@postUpdate')->name('postUpdate');
 Route::put('/set-soal/{id_test}', 'AslabController@setSoalAsprak')->name('setSoalAsprak');
+Route::get('/delete-soal/{id}', 'SoalController@destroy')->name('deleteSoal');
 Route::post('/store-aslab', 'AslabController@store');
 Route::get('/editProfileAslab/{nim}/edit', 'AslabController@edit');
 Route::post('/editProfileAslab/{nim}/update', 'AslabController@update');

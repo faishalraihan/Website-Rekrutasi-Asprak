@@ -47,7 +47,7 @@ class AsprakController extends Controller
                         Session::put('name', $data->name);
                         Session::put('email', $data->email);
                         Session::put('login', TRUE);
-                        return redirect('asprak');
+                        return redirect('asprak')->with('toast_success', 'Login Successfully!');
                 } else {
                         return redirect('login')->with('alert', 'Invalid email or password!');
                 }

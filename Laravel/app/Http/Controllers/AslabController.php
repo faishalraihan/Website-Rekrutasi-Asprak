@@ -57,7 +57,7 @@ class AslabController extends Controller
             Session::put('name', $data->name);
             Session::put('email', $data->email);
             Session::put('login', TRUE);
-            return redirect('aslab');
+            return redirect('aslab')->with('toast_success', 'Login Successfully!');
         } else {
             return redirect()->route('loginAslab')->with('alert', 'Invalid email or password!');
         }
@@ -195,7 +195,7 @@ class AslabController extends Controller
         Session::put('name', $request->name);
         Session::put('email', $request->email);
         Session::put('nimPendaftar', $request->nim);
-        return redirect('aslab');
+        return redirect('aslab')->with('success','Profile berhasil diperbaharui');
     }
 
     /**
@@ -208,7 +208,7 @@ class AslabController extends Controller
     {
         $pendaftar = Pendaftaran::findOrFail($id);
         $pendaftar->delete();
-        return redirect()->route('listPendaftar');
+        return redirect()->route('listPendaftar')->with('success', 'Data Deleted Permanently!');
     }
 
     public function editDataPendaftaran($id)
@@ -256,7 +256,7 @@ class AslabController extends Controller
         // $edit_test->id_test = $request->get('name');
         $edit_test->save();
 
-        return redirect()->route('listPendaftar')->with('status', 'Data Berhasil diUpdate');
+        return redirect()->route('listPendaftar')->with('success', 'Data Berhasil diupdate');
     }
 
     public function setSoalAsprak(Request $request, $id)
@@ -264,7 +264,7 @@ class AslabController extends Controller
         $soal = Test::findOrFail($id);
         $soal->id_soal = $request->get('id_soal');
         $soal->save();
-        return redirect()->route('listPendaftar')->with('status', 'Soal Berhasil di Set');
+        return redirect()->route('listPendaftar')->with('success', 'Soal Berhasil di Set');
     }
 
     public function viewJawabanAsprak($id_test)

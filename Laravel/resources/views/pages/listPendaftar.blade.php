@@ -151,13 +151,13 @@
                     <a class="btn btn-info" href="{{route('viewJawabanAsprak',$a->id_test)}}">View Jawaban</a>
                     @endif
                     <a class="btn btn-primary" href="{{route('editDataPendaftaran',$a->id)}}">View & Edit</a>
-                    <form method="POST" action="{{route('aslab.destroy',$a->id)}}">
+                    <!-- <form method="POST" action="{{route('aslab.destroy',$a->id)}}">
                         @csrf
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-                    </form>
-                        {{-- <a href="{{route('aslab.destroy',$a->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>  --}}
-                    
+                    </form> -->
+                    <!-- {{-- <a href="{{route('aslab.destroy',$a->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>  --}} -->
+                    <a href="{{route('deleteDataPendaftaran',$a->id)}}" class="btn btn-danger delete-confirm"><i class="fas fa-trash-alt"></i></a>
                 </td>
                 
 
