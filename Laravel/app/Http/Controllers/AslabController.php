@@ -26,33 +26,55 @@ class AslabController extends Controller
             return redirect('loginAslab')->with('alert', 'Please log in or register first');
         } else {
             $nim = Session::get('nim');
-            // var_dump($nim);
             $data = Aslab::where('nim', $nim)->first();
             return view('pages.dashboardAslab', ['data' => $data]);
         }
     }
 
+    /* Function: Login
+
+        Mengarahkan pengguna ke Halaman Login.
+
+        Returns:
+
+        Tampilan dialihkan ke halaman Login.
+    */
     public function login()
     {
         return view('auth.login-aslab');
     }
 
+    /* Function: Register
+
+        Mengarahkan pengguna ke Halaman Register.
+
+        Returns:
+
+        Tampilan dialihkan ke halaman Register.
+    */
     public function register()
     {
         return view('auth.register-aslab');
     }
 
+    /* Function: LoginPost
+
+        Autentikasi Login pengguna.
+
+        Parameters:
+
+        $request - Nilai input pengguna saat Login (Email, Password, Data).
+
+        Returns:
+
+        Apabila Email dan Password yang dimasukkan benar maka pengguna akan dialihkan ke Halaman Aslab, Jika tidak maka akan menampilkan bahwa inputan salah.
+        */
     public function loginPost(Request $request)
     {
-        //       {
         $email = $request->email;
-        // var_dump($email);
         $password = $request->password;
         $data = Aslab::where('email', $email)->first();
-        // var_dump($data);
-        //apakah email tersebut ada atau tidak
         if ($data && Hash::check($password, $data->password)) {
-            // Session::put('id', $data->id);
             Session::put('nim', $data->nim);
             Session::put('name', $data->name);
             Session::put('email', $data->email);
@@ -62,19 +84,6 @@ class AslabController extends Controller
             return redirect()->route('loginAslab')->with('alert', 'Invalid email or password!');
         }
     }
-
-
-    // public function logout()
-    // {
-    //     Session::flush();
-    //     return redirect('login')->with('alert', 'Log out Succes');
-    // }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     /**
      * Store a newly created resource in storage.
@@ -96,6 +105,14 @@ class AslabController extends Controller
         return redirect()->route('loginAslab')->with('alert-success', 'Register succes');
     }
 
+    /* Function: ListAsprak
+
+        Melakukan Query untuk menampilkan Daftar Asprak.
+        
+        Returns:
+
+        Menampilkan list/daftar Asprak ke dalam Table.
+    */
     public function listAsprak()
     {
         if (Session::has('nim')) {
@@ -107,12 +124,19 @@ class AslabController extends Controller
         }
     }
 
+    /* Function: ListAPendaftar
+
+        Melakukan Query untuk menampilkan Daftar Asprak yang telah mendaftar.
+        
+        Returns:
+
+        Menampilkan list/daftar Pendaftaran Asprak ke dalam Table.
+    */
     public function listPendaftar()
     {
         if (Session::has('nim')) {
             $data['test'] = DB::table('tests')
                 ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
-                // ->select('users.*', 'contacts.phone', 'orders.price')
                 ->get();
             $data['soals'] = Soal::all();
             return view('pages.listPendaftar')->with($data);
@@ -121,13 +145,20 @@ class AslabController extends Controller
         }
     }
 
+    /* Function: ViewHasilAkhir
+
+        Melakukan Query untuk menampilkan Hasil Seleksi pendaftaran Asprak.
+        
+        Returns:
+
+        Menampilkan Hasil Akhir.
+    */
     public function viewHasilAkhir()
     {
         if (Session::has('nim')) {
             $data['test'] = DB::table('tests')
                 ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
                 ->join('hasils', 'tests.id_test', '=', 'hasils.id_test')
-                // ->select('users.*', 'contacts.phone', 'orders.price')
                 ->get();
             return view('pages.viewResult')->with($data);
         } else {
@@ -135,32 +166,18 @@ class AslabController extends Controller
         }
     }
 
+    /* Function: Logout
+
+        Untuk Logout.
+        
+        Returns:
+
+        Kembali ke halaman Login.
+    */
     public function logout()
     {
         Session::flush();
         return redirect()->route('loginAslab')->with('alert', 'Log out Succes');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -171,7 +188,6 @@ class AslabController extends Controller
      */
     public function edit($nim)
     {
-        //
         if (Session::has('nim')) {
             $data = Aslab::where('nim', $nim)->first();
             return view('pages.editProfileAslab', ['data' => $data]);
@@ -211,15 +227,37 @@ class AslabController extends Controller
         return redirect()->route('listPendaftar')->with('success', 'Data Deleted Permanently!');
     }
 
+    /* Function: EditDataPendaftaran
+
+        Melakukan Perubahan terhadap data pendaftaran.
+
+        Parameters:
+
+        $id - Nomor Induk Mahasiswa/ID pengguna.
+        
+        Returns:
+
+        Menampilkan halaman edit pendaftaran.
+    */
     public function editDataPendaftaran($id)
     {
-        // $asprak = Pendaftaran::findOrFail($id);
         $asprak = Pendaftaran::findOrFail($id);
-        // $asprak = DB::table('pendaftarans')
-        //     ->join('aspraks', 'pendaftarans.nimPendaftar', '=', 'aspraks.nim')->where('id_pendaftaran', $nim->id_pendaftaran)->first();
         return view('pages.editDataPendaftaran', ['asprak' => $asprak]);
     }
 
+    /* Function: PostUpdate
+
+        Melakukan Query untuk menampilkan Daftar Asprak.
+
+        Parameters:
+
+        $request - Menyimpan nama, nim, pilihan praktikum dan berkas.
+        $id - Nomor Induk Mahasiswa/ID pengguna.
+        
+        Returns:
+
+        Kembali ke halaman Pendaftar dan memberi notifikasi perubahan berhasil.
+    */
     public function postUpdate(Request $request, $id)
     {
         $request->validate([
@@ -233,32 +271,28 @@ class AslabController extends Controller
         $edit_pendaftaran->name = $request->get('name');
         $edit_pendaftaran->nimPendaftar = $request->get('nim');
         $edit_pendaftaran->pilihan_praktikum = $request->get('pilihan_praktikum');
-        // var_dump($edit_pendaftaran->berkas);
-        // var_dump($request->get('berkas'));
-        // if ($request->get('berkas') == null) {
-        //     $edit_pendaftaran->berkas =  $edit_pendaftaran->berkas;
-        // } else {
-        //     $edit_pendaftaran->berkas = $request->get('berkas')->store(
-        //         'assets/product',
-        //         'public'
-        //     );
-
-        // }
-
-        // $add_pendaftaran->id_test = NULL;
         $edit_pendaftaran->save();
-        // $add_pendaftaran->id_pendaftaran = "pendaftaran_" . $add_pendaftaran->id;
-        // $add_pendaftaran->save();
 
         $edit_test = Test::findOrFail($id);
         $edit_test->id_soal = $request->get('id_soal');
-        // $edit_test->id_pendaftaran = $request->get('name');
-        // $edit_test->id_test = $request->get('name');
         $edit_test->save();
 
         return redirect()->route('listPendaftar')->with('success', 'Data Berhasil diupdate');
     }
 
+    /* Function: SetSoalAsprak
+
+        Menentukan Soal Tes untuk Asprak.
+
+        Parameters:
+
+        $request - Menyimpan ID Soal.
+        $id - ID soal yang dicari.
+        
+        Returns:
+
+        Menampilkan halaman Pendaftar dan memberi notifikasi soal berhasil di set.
+    */
     public function setSoalAsprak(Request $request, $id)
     {
         $soal = Test::findOrFail($id);
@@ -267,22 +301,25 @@ class AslabController extends Controller
         return redirect()->route('listPendaftar')->with('success', 'Soal Berhasil di Set');
     }
 
+    /* Function: ViewJawabanAsprak
+
+        Melakukan Query untuk menampilkan Jawaban Tes dari Asprak.
+
+        Parameters:
+
+        $id_test - Nomor ID Test.
+        
+        Returns:
+
+        Menampilkan Halaman Soal dan Jawaban asprak.
+    */
     public function viewJawabanAsprak($id_test)
     {
         $jawabanTest = DB::table('tests')
             ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
             ->join('soals', 'tests.id_soal', '=', 'soals.id_soal')
             ->where('tests.id_test', '=', $id_test)
-            // ->select('users.*', 'contacts.phone', 'orders.price')
             ->first();
         return view('pages.viewJawaban')->with('jawabanTest', $jawabanTest);
     }
-
-    // public function dashboard()
-    // {
-    //     $nim = Session::get('nim');
-    //     // var_dump($nim);
-    //     $data = Aslab::where('nim', $nim)->first();
-    //     return view('pages.dashboardAslab', ['data' => $data]);
-    // }
 }
