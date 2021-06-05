@@ -72,7 +72,7 @@ class PendaftaranController extends Controller
                 $add_test->save();
                 $add_pendaftaran->id_test = $add_test->id_test;
                 $add_pendaftaran->save();
-                return redirect()->route('dashboard')->with('status', 'Berhasil Mendaftar, Tunggu Info Selanjutnya Yaa');
+                return redirect()->route('dashboard')->with('success', 'Berhasil Mendaftar, Tunggu Info Selanjutnya Yaa :D');
                 // $add_test->id_soal = $request->get('id_soal');
                 // $add_test->jawaban = $request->get('jawaban');
                 // $add_test->status = true;

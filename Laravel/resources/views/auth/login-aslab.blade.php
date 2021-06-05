@@ -11,7 +11,7 @@
                 <div class="card-header text-center" style="background-color: #ffe600;">
                     <h3>Login Aslab</h3>
                 </div>
-                @if(\Session::has('alert'))
+                <!-- @if(\Session::has('alert'))
                 <div class="alert alert-danger">
                     <div>{{Session::get('alert')}}</div>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="alert alert-success">
                     <div>{{Session::get('alert-success')}}</div>
                 </div>
-                @endif
+                @endif -->
                 <div class="card-body">
                     <form method="POST" action="{{route('loginPostAslab')}}">
                         {{-- {{ csrf_field() }} --}}

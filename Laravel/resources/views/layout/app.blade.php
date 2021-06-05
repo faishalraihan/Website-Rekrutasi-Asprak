@@ -42,9 +42,9 @@
             </div>
         </div>
     </nav> --}}
-    <div class="container" style="min-height: 500px">
-        @yield('content')
-    </div>
+    
+    @yield('content')
+    
     @include('includes.footer')
 
 
@@ -53,5 +53,5 @@
 
 
 </body>
-
+@include('sweetalert::alert')
 </html>

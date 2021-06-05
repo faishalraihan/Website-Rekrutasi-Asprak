@@ -130,12 +130,15 @@
                                     </span>
                                     @endif
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="berkas">Berkas (CV)</label>
                                     <div class="input-group mb-3">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="inputGroupFile03"
-                                                aria-describedby="inputGroupFileAddon03" name="berkas">
+                                                aria-describedby="inputGroupFileAddon03" name="berkas" value="">
+                                            <input type="text" class="custom-file-input" id="inputGroupFile03"
+                                                aria-describedby="inputGroupFileAddon03" name="berkaslama" value="{{$asprak->berkas}}" hidden>
+                                            
                                             <label class=" custom-file-label overflow-hidden"
                                                 for="inputGroupFile03">{{old('berkas') ? old('berkas') : $asprak->berkas}}</label>
                                         </div>
@@ -151,7 +154,7 @@
                                     </span>
                                     @endif
 
-                                </div>
+                                </div> --}}
 
                                 <button type="submit" class="btn btn-white col-md-12"
                                     style="background-color: #ffe600;">Update</button>

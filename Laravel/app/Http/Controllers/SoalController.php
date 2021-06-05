@@ -116,17 +116,6 @@ class SoalController extends Controller
 
     /* Function: destroy
 
-<<<<<<< Updated upstream
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Soal  $soal
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Soal $soal)
-    {
-        //
-=======
     menghapus data berdasarkan id
 
     Parameters:
@@ -144,6 +133,5 @@ class SoalController extends Controller
         $soal = Soal::findOrFail($id);
         $soal->delete();
         return redirect()->route('soals.index')->with('success', 'Soal Berhasil dihapus');
->>>>>>> Stashed changes
     }
 }

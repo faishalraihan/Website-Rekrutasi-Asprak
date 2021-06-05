@@ -41,22 +41,22 @@ class AsprakController extends Controller
                 $data = Asprak::where('email', $email)->first();
                 // var_dump($data);
                 //apakah email tersebut ada atau tidak
-                if (Hash::check($password, $data->password)) {
+                if ($data && Hash::check($password, $data->password)) {
                         // Session::put('id', $data->id);
                         Session::put('nim', $data->nim);
                         Session::put('name', $data->name);
                         Session::put('email', $data->email);
                         Session::put('login', TRUE);
-                        return redirect('asprak');
+                        return redirect('asprak')->with('toast_success', 'Login Successfully!');
                 } else {
-                        return redirect('login')->with('alert', 'Invalid email or passwordd!');
+                        return redirect('login')->with('alert', 'Invalid email or password!');
                 }
         }
 
         public function logout()
         {
                 Session::flush();
-                return redirect('login')->with('alert', 'Log out Succes');
+                return redirect('login')->with('alert-success', 'Log out Succes');
         }
 
         /**
@@ -106,8 +106,14 @@ class AsprakController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function edit($id)
+        public function edit($nim)
         {
+                if (Session::has('nim')) {
+                        $data = Asprak::where('nim', $nim)->first();
+                        return view('pages.editProfile', ['data' => $data]);
+                } else {
+                        return redirect('login')->with('alert', 'Login First');
+                }
         }
 
         /**
@@ -117,8 +123,17 @@ class AsprakController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, $id)
+        public function update(Request $request, $nim)
         {
+                Asprak::updateProfile($request, $nim);
+                $request->session()->forget(['name', 'nim', 'nimPendaftar', 'email']);
+                Session::put('nim', $request->nim);
+                Session::put('name', $request->name);
+                Session::put('email', $request->email);
+                Session::put('nimPendaftar', $request->nim);
+                return redirect()->action(
+                        'AsprakController@dashboard'
+                );
         }
         public function testTulis($id_test)
         {
@@ -170,6 +185,7 @@ class AsprakController extends Controller
                 // var_dump($nim);
                 // $dataP = Pendaftaran::where('nimPendaftar', )->first();
                 //var_dump($dataP);
+                //var_dump($data['dataH']);
                 if ($data['dataP']) {
                         Session::put('nimPendaftar', $data['dataP']->nim);
                         // return view('pages.dashboard', ['dataP' => $dataP]);
