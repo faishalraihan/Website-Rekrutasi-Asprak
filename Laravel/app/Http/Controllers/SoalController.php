@@ -13,6 +13,9 @@ class SoalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // Function: index
+    // return page listSoal with data Soal.
     public function index()
     {
         $soals = Soal::all();
@@ -24,6 +27,19 @@ class SoalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    /* Function: create
+
+    Function Untuk Mengalihkan ke page pembuatan soal buatSoal.blade.php
+
+    Parameters:
+
+      $request - request dari halaman web dipakai untuk session
+
+    Returns:
+
+      return pages buatSoal untuk pembuatan soal beserta data session
+    */
     public function create(Request $request)
     {
         $data['nim'] = $request->session()->get('nim');
@@ -37,6 +53,21 @@ class SoalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    /* Function: store
+
+    melakukan penyimpanan data  hasil inputan dari page buatSoal
+
+    Parameters:
+
+      $request - Request inputan user dari page buatSoal  untuk disimpan
+
+    Returns:
+
+      jika berhasil data tersimpan ke database, dan redirect ke page buatSoal
+      jika gagal return ke page create
+
+    */
     public function store(Request $request)
     {
         $add_soal = new Soal;
@@ -56,38 +87,24 @@ class SoalController extends Controller
      * @param  \App\Models\Soal  $soal
      * @return \Illuminate\Http\Response
      */
+
+    /* Function: show
+
+    menampilkan halaman soal dan jawaban yang dipilih berdasarkan $id
+
+    Parameters:
+
+      $id - id soal
+
+    Returns:
+
+      page soal dan jawaban suatu matkul sesuai $id
+
+    */
     public function show($id)
     {
-        // $data['soal'] = DB::table('soals')
-        //     ->join('tests', 'soals.id_soal', '=', 'tests.id_soal') //->where('nimPendaftar', $nim)->first();
-        //     ->join('pendaftarans', 'tests.id_pendaftaran', '=', 'pendaftarans.id_pendaftaran')
-        //     ->select('soals.*', 'tests.*', 'pendaftarans.*')
-        //     ->get();
         $soal = Soal::findOrFail($id);
         return view('pages.lihatSoal')->with('soal', $soal);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Soal  $soal
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Soal $soal)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Soal  $soal
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Soal $soal)
-    {
-        //
     }
 
     /**
@@ -96,10 +113,25 @@ class SoalController extends Controller
      * @param  \App\Models\Soal  $soal
      * @return \Illuminate\Http\Response
      */
+
+    /* Function: destroy
+
+    menghapus data berdasarkan id
+
+    Parameters:
+
+      $id - id soal
+
+    Returns:
+
+      page listSoal beserta flash message "success" jika delete berhasi dan
+      flash message "fail" jika delete gagal 
+      
+    */
     public function destroy($id)
     {
         $soal = Soal::findOrFail($id);
         $soal->delete();
-        return redirect()->route('soals.index')->with('success','Soal Berhasil dihapus');
+        return redirect()->route('soals.index')->with('success', 'Soal Berhasil dihapus');
     }
 }
