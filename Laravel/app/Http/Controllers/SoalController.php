@@ -113,8 +113,12 @@ class SoalController extends Controller
      * @param  \App\Models\Soal  $soal
      * @return \Illuminate\Http\Response
      */
+<<<<<<< Updated upstream
 
     /* Function: destroy
+=======
+    
+>>>>>>> Stashed changes
 
     menghapus data berdasarkan id
 

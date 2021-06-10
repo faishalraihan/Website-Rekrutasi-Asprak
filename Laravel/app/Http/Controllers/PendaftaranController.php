@@ -61,7 +61,6 @@ class PendaftaranController extends Controller
                         'public'
                 );
 
-                // $add_pendaftaran->id_test = NULL;
                 $add_pendaftaran->save();
                 $add_pendaftaran->id_pendaftaran = "pendaftaran_" . $add_pendaftaran->id;
                 $add_pendaftaran->save();
@@ -73,9 +72,5 @@ class PendaftaranController extends Controller
                 $add_pendaftaran->id_test = $add_test->id_test;
                 $add_pendaftaran->save();
                 return redirect()->route('dashboard')->with('success', 'Berhasil Mendaftar, Tunggu Info Selanjutnya Yaa :D');
-                // $add_test->id_soal = $request->get('id_soal');
-                // $add_test->jawaban = $request->get('jawaban');
-                // $add_test->status = true;
-                // return redirect()->route('asprak.dashboard')->with('success', 'Anda Sudah menyelesaikan Test');
         }
 }

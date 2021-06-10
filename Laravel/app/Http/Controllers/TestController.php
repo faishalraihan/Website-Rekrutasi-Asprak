@@ -34,27 +34,6 @@ class TestController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, $id_test)
-    {
-        // 
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Test  $test
@@ -65,22 +44,12 @@ class TestController extends Controller
         if (!Session::get('login')) {
             return redirect('login')->with('alert', 'Please log in or register first');
         } else {
-            $nim = Session::get('nim');
-            // var_dump($nim);
-            // $dataTest['session'] = Asprak::where('nim', $nim)->first();
-            // $dataTest['pendaftaran'] = Pendaftaran::where('nimPendaftar', $nim)->get();
-
-
-
-
             $dataTest['data'] = DB::table('pendaftarans')
-                ->join('tests', 'pendaftarans.id_test', '=', 'tests.id_test') //->where('nimPendaftar', $nim)->first();
+                ->join('tests', 'pendaftarans.id_test', '=', 'tests.id_test')
                 ->join('soals', 'tests.id_soal', '=', 'soals.id_soal')
                 ->select('pendaftarans.*', 'tests.*', 'soals.*')
                 ->where('pendaftarans.id_test', '=', $id_test)
                 ->first();
-            // $dataTest['id_test'] = Pendaftaran::where('id_test', $id_test)->first();
-            // var_dump($dataTest);
             if ($dataTest['data']) {
                 return view('pages.testTulis')->with('data', $dataTest);
             } else {
@@ -113,20 +82,6 @@ class TestController extends Controller
     {
         $jawaban = $request->get('jawaban');
         Test::where('id_test', $id_test)->update(['jawaban' => $jawaban, 'status' => true]);
-        // $test->jawaban = $request->input('jawaban');
-        // $test->status = true;
-        // $test->save();
         return redirect()->route('dashboard')->with('status', 'Test berhasil dilakasnakan, Tunggu pengumumanya yaaa!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Test  $test
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Test $test)
-    {
-        //
     }
 }
